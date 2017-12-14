@@ -55,13 +55,26 @@ class Post extends Component {
                 <Grid.Column width={8} ><Segment raised>
 
                     <div class="ui form" >
-
+                          
                         <div class="field">
-                            <label>User Text</label>
-                            <textarea autoHeight name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
+
+                        <div class="ui message">
+               <div class="header">Your Post </div>
+               <div class="content">
+                   <p></p>
+                   </div>
+                  </div>
+
+
+
+                            <label>Comment</label>
+                            <textarea rows="2" cols="50" name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
                         </div>
 
                         <br />
+
+
+
                         <Container textAlign='right' >
                             <Button animated textAlign='right' onClick={this.onSubmit}>
                                 <Button.Content visible >POST</Button.Content>
