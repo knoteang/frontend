@@ -4,6 +4,9 @@ import { Icon, Grid, Button, Divider, Container, Segment } from 'semantic-ui-rea
 import logo from '../Profile/steve.jpg';
 import { publishPost, getAllPosts } from '../../api'
 import PostLeft from './PostLeft'
+
+import PostRight from './PostRight'
+
 class Post extends Component {
 
     constructor() {
@@ -102,7 +105,7 @@ class Post extends Component {
 
 
                 <Grid.Column width={4}>
-                    <p></p>
+                <PostRight/>
                 </Grid.Column>
 
             </Grid >
