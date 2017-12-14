@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Grid, Button, Divider, Container,Segment,Popup ,Modal,Header} from 'semantic-ui-react'
 
+import ModalEdit from '../edit/edit'
 import pic from './steve.jpg'
 import './user.css'
 class User extends Component {
@@ -49,9 +50,11 @@ class User extends Component {
 
   <div class="content">
 
-      <a class="ui header" href="#link">Edit Profile</a>
+      <a class="ui header" href="#link">Edit Profile
+        <ModalEdit/>
+      </a>
 
-      
+
       <div class="description">
         <p></p>
       </div>
@@ -82,20 +85,6 @@ class User extends Component {
       </div>
      
 
-      <Modal trigger={<Button><i class="trash outline icon"></i> Delete</Button>} basic size='small'>
-    <Header icon='archive' content='Archive Old Messages' />
-    <Modal.Content>
-      <p>Do you want to delete this messages?</p>
-    </Modal.Content>
-    <Modal.Actions>
-      <Button basic color='red'  inverted  >
-        <Icon name='remove' /> No
-      </Button>
-      <Button color='green' inverted>
-        <Icon name='checkmark' /> Yes
-      </Button>
-    </Modal.Actions>
-  </Modal>
      
 
     </div>
