@@ -7,6 +7,7 @@ import SignUp from './Pages/SignUp'
 import Feed from './Pages/feed'
 import Profile from './Pages/profile'
 import Admin from './Pages/admin'
+import PostFeed from './Pages/postfeed'
 
 const Routes = () => {
   return (
@@ -17,9 +18,10 @@ const Routes = () => {
         <Redirect to="/" />
       ) : (
           <Switch>
-            <Route exact path="/Feed" component={Feed} />
+            <Route exact path="/Feed" component={PostFeed} />
             <Route exact path="/Profile" component={Profile} />
             <Route exact path="/Admin" component={Admin} />
+            <Route exact path="/Comment" component={Feed} />
           </Switch>
         )}
     </Switch>
