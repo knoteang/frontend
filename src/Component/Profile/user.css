@@ -1,0 +1,7 @@
+body{
+  background-color: rgb(235, 235, 235);
+}
+.ui.grid.massive.message{
+background-color: rgb(226, 226, 226);
+color: white;
+}

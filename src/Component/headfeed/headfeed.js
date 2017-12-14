@@ -13,7 +13,7 @@ class HeadFeed extends Component {
       <div class="ui borderless huge menu">
         <div class="ui container grid">
           <div class="computer only row">
-            <a class="header item" href="/Feed">>PS POST <i class="small chat icon"></i></a>
+            <a class="header item" href="/Feed">PS POST <i class="small chat icon"></i></a>
             <Menu.Item>
               <Input icon='search' placeholder='Search...' />
             </Menu.Item>

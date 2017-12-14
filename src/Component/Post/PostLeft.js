@@ -1,16 +1,22 @@
-import React from 'react'
-import { Divider } from 'semantic-ui-react'
+import React,{Component} from 'react'
+import { Divider,Card } from 'semantic-ui-react'
 
-import logo from './dog.jpg';
+import logo from '../Profile/steve.jpg';
 import './Post.css'
 
-const PostLeft = () => (
+class PostLeft extends Component {
+  render() {
+    return (
   <div>
+    <div className="Left">
     <img class="ui medium rounded image" src={logo}/>
-    <Divider />
-    <h2>
-      Username
-    </h2>
-  </div>
-)
+    <Card
+    link
+    header={JSON.parse(localStorage.getItem('profileUser')).username}
+    meta='default'
+  />
+  </div></div>
+);
+  }
+}
 export default PostLeft
