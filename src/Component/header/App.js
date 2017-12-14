@@ -33,7 +33,6 @@ class App extends Component {
 
   getUser = (username) => {
     getUserOne(username).then(data => {
-      console.log(data)
       localStorage.setItem('profileUser', JSON.stringify(data))
       window.location.assign('/Feed')
     })
