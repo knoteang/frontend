@@ -17,6 +17,7 @@ const Routes = () => {
       ) : (
           <Switch>
             <Route exact path="/Feed" component={Feed} />
+            <Route exact path="/Profile" component={Profile} />
           </Switch>
         )}
     </Switch>

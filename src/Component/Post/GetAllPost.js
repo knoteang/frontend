@@ -1,10 +1,12 @@
-import React from 'react'
+import React,{Component} from 'react'
 import { Divider } from 'semantic-ui-react'
 
-import logo from './dog.jpg';
+import logo from '../Profile/steve.jpg';
 import Reply from './Reply/Reply';
 
-const GetAllPost = () => (
+class GetAllPost extends Component {
+  render() {
+    return (
   <div className='getallpost'>
     <div class="ui comments">
       <div class="comment">
@@ -19,13 +21,15 @@ const GetAllPost = () => (
           <div class="text">
             I'm very interested in this motherboard. Do you know if it'd work in a Intel LGA775 CPU socket?
           </div>
-          <Divider />
-          <Reply />
+          
+       
         </div>
       </div>
     </div>
     <Divider />
   </div>
-)
+);
+  }
+}
 
 export default GetAllPost

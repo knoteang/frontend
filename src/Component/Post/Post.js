@@ -1,10 +1,13 @@
-import React from 'react'
+import React,{Component} from 'react'
 import { Icon, Grid, Button, Divider, Container,Segment } from 'semantic-ui-react'
 
 import GetAllPost from './GetAllPost'
 import PostLeft from './PostLeft'
-const Post = () => (
 
+
+class Post extends Component {
+    render() {
+      return (
     <Grid >
         <Grid.Column width={4}>
         <center/>
@@ -37,7 +40,9 @@ const Post = () => (
             <p></p>
         </Grid.Column>
     </Grid>
-)
+);
+    }
+}
 
 
 export default Post

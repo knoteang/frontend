@@ -1,6 +1,7 @@
 import React from 'react';
 import './choose.css'
 import { Icon,Button} from 'semantic-ui-react'
+
 const Choose = () => (
 
     <div className="Choose">

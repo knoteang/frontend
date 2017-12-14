@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Icon, Grid, Button, Divider, Container,Segment } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container,Segment,Popup } from 'semantic-ui-react'
 
 import pic from './steve.jpg'
-
+import './user.css'
 class User extends Component {
   render() {
     return (
@@ -23,24 +23,38 @@ class User extends Component {
     <div class="ui hidden divider"></div>
     <div class="ui container">
       <div class="ui stackable grid">
-        <div class="two column row">
+        <div class="three column row">
           <div class="column">
            
           <div class="ui card">
-  <a class="image" href="#link">
-  <img class="ui medium image" src={pic}/>
-  </a>
+
+ 
+
+    <Popup
+          trigger={ <a class="image" href="#link">
+       <img class="ui medium image" src={pic}/>
+         </a>}
+           content='Hello! welcome to my profile'
+           size='large'
+    />
   <div class="content">
-    <a class="header" href="#link">Username</a>
+    <a class="header" href="/Profile">{JSON.parse(localStorage.getItem('profileUser')).username}</a>
     <div class="meta">
-      <a class="time">//////////</a>
+   
     </div>
   </div>
+
+  <div class="content">
+      <a class="ui header" href="#link">Link Header</a>
+      <div class="description">
+        <p></p>
+      </div>
+    </div>
 </div> 
         
           </div>
 
-          <div class="eight wide column">
+          <div class="nine wide column">
           <Segment raised>
             <div class="ui form">
                 <div class="field">
