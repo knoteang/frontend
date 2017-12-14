@@ -16,9 +16,6 @@ class Choose extends Component {
         this.state.pt = name
         console.log(this.state.pt)
         loginOauth(this.state.pt)
-            .then(response => {
-                console.log(response)
-            })
             .then(data => {
                 console.log(data)
             })

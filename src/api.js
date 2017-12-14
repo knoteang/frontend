@@ -26,9 +26,9 @@ export const getUserOne = (username) => {  // func login
 
 export const loginOauth = (pt) => {
   return axiosInstance.get('/oauth/' + pt)
-    .then(response => response.data)
     .then(data => data)
     .catch(error => { throw (error.response) })
+
 }
 
 ////////
