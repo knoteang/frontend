@@ -33,13 +33,11 @@ export const loginOauth = (pt) => {
 
 ////////
 
-export const publishPost = (title, content) => {
+export const publishPost = (content) => {
   const data = {
-    title: title,
     content: content,
-    user: { username: localStorage.getItem('username') }
+    author: JSON.parse(localStorage.getItem('profileUser')).username
   }
-
   return axiosInstance.post('api/post/create/', data)
     .then(data => data)
     .catch(error => error.response)
