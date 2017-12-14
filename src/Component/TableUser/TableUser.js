@@ -5,11 +5,10 @@ class TableUser extends Component {
 
     render() {
         return (
-
-            <Grid >
-                <Grid.Column width={4}>
-
-                </Grid.Column>
+            <div className="tableuser" >
+            <div class="ui grid" >
+                
+            </div>
 
                 <Grid.Column width={8}>
                     <Table celled>
@@ -71,7 +70,7 @@ class TableUser extends Component {
                 <Grid.Column width={4}>
 
                 </Grid.Column>
-            </Grid>
+            </div>
         )
     }
 }

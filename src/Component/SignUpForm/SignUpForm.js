@@ -41,7 +41,7 @@ class SignUpForm extends Component {
                 <Form.Group widths=''>
                  
       <Form.Input label='phone' placeholder='0XXXXXXXXX' type='password' />
-      
+
       <Form.Select label='Gender' options={options} placeholder='Gender'/>
                 </Form.Group>
                
