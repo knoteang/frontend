@@ -48,3 +48,11 @@ export const getAllPosts = () => {
     .then(response => response.data)
     .catch(error => { throw (error.response) })
 }
+////
+
+export const register = (dataR) => {
+  const data = dataR
+  return axiosInstance.post('/api/user/signup', data)
+    .then(data => data)
+    .catch(error => error.response)
+}
