@@ -6,6 +6,7 @@ import Main from './Pages/main'
 import SignUp from './Pages/SignUp'
 import Feed from './Pages/feed'
 import Profile from './Pages/profile'
+import Admin from './Pages/admin'
 
 const Routes = () => {
   return (
@@ -18,6 +19,7 @@ const Routes = () => {
           <Switch>
             <Route exact path="/Feed" component={Feed} />
             <Route exact path="/Profile" component={Profile} />
+            <Route exact path="/Admin" component={Admin} />
           </Switch>
         )}
     </Switch>
