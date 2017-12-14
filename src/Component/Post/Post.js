@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Icon, Grid, Button, Divider, Container, Segment } from 'semantic-ui-react'
 
-
+import logo from '../Profile/steve.jpg';
 import { publishPost, getAllPosts } from '../../api'
-import GetAllPost from './GetAllPost'
 import PostLeft from './PostLeft'
 class Post extends Component {
 
     constructor() {
         super();
         this.state = { // set state can use in class component only
-            content: ''
+            content: '',
+            allPosts: []
         }
         this.onTextChange = this.onTextChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -21,16 +21,25 @@ class Post extends Component {
         const value = e.target.value
 
         this.setState({ [name]: value })
-        console.log(value)
     }
 
     onSubmit(e) {
         e.preventDefault()
+        publishPost(this.state.content).then(() => { this.getPosts() })
+    }
 
-        publishPost(this.state.content)
+    getPosts = () => {
+        getAllPosts()
+            .then(data => this.setState({ allPosts: data }))
+            .catch(err => console.error('Something went wrong.'))
+    }
+
+    componentDidMount() { // when render finish call is func
+        this.getPosts()
     }
 
     render() {
+        const posts = this.state.allPosts
         return (
             < Grid >
 
@@ -61,7 +70,34 @@ class Post extends Component {
                     </div>
 
                     <Divider />
-                    <GetAllPost /></Segment>
+                    {posts.length >= 0 ? //in { } is logic
+                        posts.map(post =>
+                            <div className='getallpost'>
+                                <div class="ui comments">
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img class="ui medium image" src={logo} />
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">{post.author}</a>
+                                            <div class="metadata">
+                                                <span class="date">{post.time}</span>
+                                            </div>
+                                            <div class="text">
+                                                {post.content}
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <Divider />
+                            </div>
+                        )
+                        : null
+                    }
+                </Segment>
                 </Grid.Column>
 
 
