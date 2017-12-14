@@ -10,11 +10,7 @@ class PostLeft extends Component {
   <div>
     <div className="Left">
     <img class="ui medium rounded image" src={logo}/>
-    <Card
-    link
-    header={JSON.parse(localStorage.getItem('profileUser')).username}
-    meta='default'
-  />
+   
   </div></div>
 );
   }

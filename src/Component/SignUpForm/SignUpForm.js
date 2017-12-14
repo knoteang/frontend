@@ -25,25 +25,26 @@ class SignUpForm extends Component {
       laboris nisi ut aliquip ex ea commodo consequat.
       <Container text>
 
+      <Form.Group widths=''>
+      <Form.Input label='First Name' placeholder='First Name' type='text' />            
+      <Form.Input label='Last Name' placeholder='Last Name' type='text' />
+      <Form.Input label='Username' placeholder='Username' type='text' />   
+                </Form.Group>
 
-                            <Form.Group>
-                                <Form.Input label='First Name' placeholder='First Name' type='text' />
-                                <Form.Input label='Last Name' placeholder='Last Name' type='text' />
-                                <Form.Input label='Username' placeholder='Username' type='text' />
-                            </Form.Group>
+                <Form.Group widths=''>
+            
+      <Form.Input label='Password' placeholder='Password' type='password' />
+      <Form.Input label='Confirm Password' placeholder='Confirm Password' type='password' />
+      <Form.Input label='email' placeholder='xxxxx@.mail.com' type='text' /> 
+                </Form.Group>
 
-                            <Form.Group>
-
-                                <Form.Input label='Password' placeholder='Password' type='password' />
-                                <Form.Input label='Confirm Password' placeholder='Confirm Password' type='password' />
-                                <Form.Input label='email' placeholder='xxxxx@.mail.com' type='text' />
-                            </Form.Group>
-
-                            <Form.Group>
-
-                                <Form.Input label='phone' placeholder='0XXXXXXXXX' type='password' />
-                                <Form.Select label='Gender' options={options} placeholder='Gender' />
-                            </Form.Group>
+                <Form.Group widths=''>
+                 
+      <Form.Input label='phone' placeholder='0XXXXXXXXX' type='password' />
+      
+      <Form.Select label='Gender' options={options} placeholder='Gender'/>
+                </Form.Group>
+               
 
 
 
