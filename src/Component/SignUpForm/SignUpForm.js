@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Header, Segment,Container,Icon } from 'semantic-ui-react'
+import { Button, Form, Header, Segment, Container, Icon } from 'semantic-ui-react'
 import './SignUpForm.css'
 
 const options = [
@@ -15,16 +15,15 @@ class SignUpForm extends Component {
 
             <div className="S">
 
-            <Form>
-                <Header as='h2' attached='top'>
-                   SIGN UP WITH YOUR E-MAIL  <Icon name='add user' />
-               </Header>
-                <Segment attached>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                <Form>
+                    <Header as='h2' attached='top'>
+                        SIGN UP WITH YOUR E-MAIL  <Icon name='add user' />
+                    </Header>
+                    <Segment attached>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
       ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
       laboris nisi ut aliquip ex ea commodo consequat.
       <Container text>
-    
 
       <Form.Group widths=''>
       <Form.Input label='First Name' placeholder='First Name' type='text' />            
@@ -45,13 +44,14 @@ class SignUpForm extends Component {
       
       <Form.Select label='Gender' options={options} placeholder='Gender'/>
                 </Form.Group>
+               
 
-            
 
-                <a href="/"><Button type='sumbit'>Submit</Button></a>  </Container> </Segment>
-            </Form >
 
-</div>
+                            <a href="/"><Button color='red' type='sumbit'>Submit</Button></a>  </Container> </Segment>
+                </Form >
+
+            </div>
         )
     }
 }
