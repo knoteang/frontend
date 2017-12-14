@@ -12,7 +12,7 @@ const Routes = () => {
     <Switch>
       <Route exact path="/" component={Main} />
       <Route exact path="/Signup" component={SignUp} />
-      {!localStorage.getItem('usernamePS') ? (
+      {!localStorage.getItem('profileUser') ? (
         <Redirect to="/" />
       ) : (
           <Switch>

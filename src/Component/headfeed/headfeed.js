@@ -19,7 +19,7 @@ class HeadFeed extends Component {
             </Menu.Item>
             <div class="right menu">
 
-              <a class="active item" href="/Profile">{localStorage.getItem('usernamePS')}</a>
+              <a class="active item" href="/Profile">{JSON.parse(localStorage.getItem('profileUser')).username}</a>
               <a class="item" onClick={this.signOut}>Log out</a>
             </div>
           </div>
