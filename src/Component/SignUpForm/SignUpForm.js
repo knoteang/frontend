@@ -26,23 +26,24 @@ class SignUpForm extends Component {
       <Container text>
     
 
-      <Form.Group widths='equal'>
+      <Form.Group widths=''>
       <Form.Input label='First Name' placeholder='First Name' type='text' />            
       <Form.Input label='Last Name' placeholder='Last Name' type='text' />
       <Form.Input label='Username' placeholder='Username' type='text' />   
                 </Form.Group>
 
-                <Form.Group widths='equal'>
+                <Form.Group widths=''>
             
       <Form.Input label='Password' placeholder='Password' type='password' />
       <Form.Input label='Confirm Password' placeholder='Confirm Password' type='password' />
+      <Form.Input label='email' placeholder='xxxxx@.mail.com' type='text' /> 
                 </Form.Group>
 
-                <Form.Group widths='equal'>
-      <Form.Input label='email' placeholder='xxxxx@.mail.com' type='text' />            
+                <Form.Group widths=''>
+                 
       <Form.Input label='phone' placeholder='0XXXXXXXXX' type='password' />
       
-      <Form.Select label='Gender' options={options} placeholder='Gender' inline />
+      <Form.Select label='Gender' options={options} placeholder='Gender'/>
                 </Form.Group>
 
             

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Icon, Grid, Button, Divider, Container,Segment,Popup } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container,Segment,Popup ,Modal,Header} from 'semantic-ui-react'
 
 import pic from './steve.jpg'
 import './user.css'
 class User extends Component {
+
+  
+
   render() {
     return (
       
@@ -45,7 +48,10 @@ class User extends Component {
   </div>
 
   <div class="content">
-      <a class="ui header" href="#link">Link Header</a>
+
+      <a class="ui header" href="#link">Edit Profile</a>
+
+      
       <div class="description">
         <p></p>
       </div>
@@ -58,13 +64,49 @@ class User extends Component {
           <Segment raised>
             <div class="ui form">
                 <div class="field">
-                    <label>User Text</label>
+                <div className='getallpost'>
+
+
+    <div class="ui comments">
+      <h1>All Your Post</h1>  <Divider />
+      <div class="comment">
+        <a class="avatar">
+          <img class="ui medium image" src={pic}/>
+        </a>
+        <div class="content">
+          <a class="author">Christian Rocha</a>
+          <div class="text">
+            I'm very interested in this motherboard. Do you know if it'd work in a Intel LGA775 CPU socket?
+          </div>
+        </div>
+      </div>
+     
+
+      <Modal trigger={<Button><i class="trash outline icon"></i> Delete</Button>} basic size='small'>
+    <Header icon='archive' content='Archive Old Messages' />
+    <Modal.Content>
+      <p>Do you want to delete this messages?</p>
+    </Modal.Content>
+    <Modal.Actions>
+      <Button basic color='red'  inverted  >
+        <Icon name='remove' /> No
+      </Button>
+      <Button color='green' inverted>
+        <Icon name='checkmark' /> Yes
+      </Button>
+    </Modal.Actions>
+  </Modal>
+     
+
+    </div>
+   <Divider />
+  </div>
                  
                 </div>
             </div>
-            <br />
+           
           
-            <Divider />
+            
          </Segment>
           </div>
         

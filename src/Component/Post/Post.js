@@ -3,7 +3,7 @@ import { Icon, Grid, Button, Divider, Container,Segment } from 'semantic-ui-reac
 
 import GetAllPost from './GetAllPost'
 import PostLeft from './PostLeft'
-
+import PostRight from './PostRight'
 
 class Post extends Component {
     render() {
@@ -37,7 +37,7 @@ class Post extends Component {
   
 
         <Grid.Column width={4}>
-            <p></p>
+            <PostRight/>
         </Grid.Column>
     </Grid>
 );
