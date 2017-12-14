@@ -40,7 +40,7 @@ render(){
 
                       <Button.Group basic size='small'floated='right'>
                             <Button icon='delete' />
-                            <Button icon='eye' href="" />
+                            <Button icon='eye' href="/Comment" />
                    </Button.Group>
                      
 
