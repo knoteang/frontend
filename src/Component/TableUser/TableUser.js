@@ -3,7 +3,14 @@ import { Table, Grid, Button, Modal, Header, Icon } from 'semantic-ui-react'
 
 class TableUser extends Component {
 
+    state = { open: false }
+    
+      show = size => () => this.setState({ size, open: true })
+      close = () => this.setState({ open: false })
+
     render() {
+        const { open, size } = this.state
+
         return (
             <Grid>
                 <Grid.Column width={4}>
@@ -24,20 +31,24 @@ class TableUser extends Component {
                                 <Table.Cell>John</Table.Cell>
                                 <Table.Cell textAlign='right'>
 
-                                    <Modal trigger={<Button color="red"><i class="trash outline icon"></i> Delete</Button>} basic size='small'>
-                                        <Header icon='archive' content='Archive Old Messages' />
-                                        <Modal.Content>
-                                            <p>Do you want to delete this user?</p>
-                                        </Modal.Content>
-                                        <Modal.Actions>
-                                            <Button basic color='red' inverted  >
-                                                <Icon name='remove' /> No
-                                            </Button>
-                                            <Button color='green' inverted>
-                                                <Icon name='checkmark' /> Yes
-                                            </Button>
-                                        </Modal.Actions>
-                                    </Modal>
+                                <div>
+                                <Button color="red" onClick={this.show('tiny')}>Delete</Button>
+                        
+                                <Modal size={size} open={open} onClose={this.close}>
+                                  <Modal.Header>
+                                    Delete This Account
+                                  </Modal.Header>
+                                  <Modal.Content>
+                                    <p>Are you sure you want to delete this account</p>
+                                  </Modal.Content>
+                                  <Modal.Actions>
+                                    <Button negative>
+                                      No
+                                    </Button>
+                                    <Button positive icon='checkmark' labelPosition='right' content='Yes' />
+                                  </Modal.Actions>
+                                </Modal>
+                              </div>
 
                                 </Table.Cell>
                             </Table.Row>
