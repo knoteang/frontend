@@ -17,9 +17,6 @@ class HeadFeed extends Component {
         <div class="ui container grid">
           <div class="computer only row">
             <a class="header item" href="/Feed">PS POST <i class="small chat icon"></i></a>
-            <Menu.Item>
-              <Input icon='search' placeholder='Search...' />
-            </Menu.Item>
             <div class="right menu">
 
               <a class="header item" href="/Profile" onClick={localStorage.setItem("temUser", JSON.parse(localStorage.getItem('profileUser')).username)}>{JSON.parse(localStorage.getItem('profileUser')).username}</a>
