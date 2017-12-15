@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import './App.css';
 import { loginLocal, getUserOne } from '../../api'
-
+import ModalHead from './modalhead'
+import { fail } from 'assert';
 class App extends Component {
 
   state = { // set state can use in class component only
     username: '',
-    password: ''
+    password: '',
+    fail: ''
   }
 
   onTextChange = event => { // can use for all that have name and value
@@ -27,6 +29,8 @@ class App extends Component {
           //this.props.history.replace('/') // can use when import to file routes // redirect
           //console.log(localStorage.getItem('usernamePS') + "1234567")
           //window.location.assign('/Feed')
+        } else {
+          alert('Username or Password is invalid. Please try  again !!!!')
         }
       })
   }
@@ -49,6 +53,7 @@ class App extends Component {
                 <div class="ui form"><br />
                   <div class="inline fields">
                     <div class="field">
+
                       <input placeholder="Username" type="text" name="username" value={this.state.username} onChange={this.onTextChange}
                       />
                     </div>
@@ -62,6 +67,7 @@ class App extends Component {
                       <button type='submit' class="ui green button">
                         Log in
                       </button>
+
                     </div>
                   </div>
                 </div>
