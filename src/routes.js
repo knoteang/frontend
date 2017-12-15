@@ -8,12 +8,14 @@ import Feed from './Pages/feed'
 import Profile from './Pages/profile'
 import Admin from './Pages/admin'
 import PostFeed from './Pages/postfeed'
+import Facebook from './Pages/Oauth/Facebook'
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Main} />
       <Route exact path="/Signup" component={SignUp} />
+      <Route exact path="/Facebook" component={Facebook} />
       {!localStorage.getItem('profileUser') ? (
         <Redirect to="/" />
       ) : (
