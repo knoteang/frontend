@@ -67,6 +67,17 @@ export const register = (dataR) => {
     .catch(error => error.response)
 }
 
+export const saveuser = (name,mail) => {
+  const data = {
+    username:name,
+    email:name
+  }
+
+  return axiosInstance.post('/api/user/signup', data)
+    .then(data => data)
+    .catch(error => error.response)
+}
+
 export const getComments = () => {
   return axiosInstance.get('api/post/getcomment/' + localStorage.getItem('post_id'))
     .then(response => response.data)
