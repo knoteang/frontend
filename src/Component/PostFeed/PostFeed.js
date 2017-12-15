@@ -38,6 +38,12 @@ class PostCom extends Component {
         this.setState({ [name]: value })
     }
 
+    search = () => {
+        search(this.state.sw)
+            .then(data => this.setState({ allPosts: data }))
+            .catch(err => console.error('Something went wrong.'))
+    }
+
     onSubmit(e) {
         e.preventDefault()
         publishPost(this.state.content, "topic").then(() => { this.getPosts() })
@@ -51,12 +57,6 @@ class PostCom extends Component {
 
     componentDidMount() { // when render finish call is func
         this.getPosts()
-    }
-
-    componentWillUpdate() {
-        search(this.state.sw)
-            .then(data => this.setState({ allPosts: data }))
-            .catch(err => console.error('Something went wrong.'))
     }
 
     render() {
@@ -73,7 +73,7 @@ class PostCom extends Component {
 
                 <Grid.Column width={8} >
                     <Menu.Item>
-                        <Input fluid icon='search' size="large" icon='search' placeholder='Search...' name='sw' onChange={this.onSearch} />
+                        <Input fluid icon='search' size="large" icon='search' placeholder='Search...' value={this.state.sw} name='sw' onChange={this.onSearch} />
                     </Menu.Item>
                     <Segment raised>
                         <div class="ui form" >
@@ -111,11 +111,11 @@ class PostCom extends Component {
                                                         <a class="author">{post.author}</a>
                                                         <div class="text">
                                                             {post.content}
-                                                            
+
                                                             <Button.Group basic size='small' floated="right">
                                                                 <Button icon='delete' />
                                                                 <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
-                                                            </Button.Group> <Divider/>
+                                                            </Button.Group> <Divider />
                                                         </div>
                                                     </div>
                                                 </div>
