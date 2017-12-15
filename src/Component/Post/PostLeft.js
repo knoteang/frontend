@@ -7,11 +7,16 @@ import './Post.css'
 class PostLeft extends Component {
   render() {
     return (
-  <div>
+  
     <div className="Left">
     <img class="ui medium rounded image" src={logo}/>
-   
-  </div></div>
+    
+    <Card
+    
+    header='Share your day with others'
+    meta='default'
+  />
+  </div>
 );
   }
 }

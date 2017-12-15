@@ -64,7 +64,7 @@ class PostCom extends Component {
 
                 <Grid.Column width={8} >
                     <Menu.Item>
-                        <Input icon='search' placeholder='Search...' />
+                        <Input fluid icon='search' size="large" placeholder='Search...' />
                     </Menu.Item>
                     <Segment raised>
                         <div class="ui form" >
