@@ -59,7 +59,7 @@ class TableUser extends Component {
                 </Grid.Column>
 
                 <Grid.Column width={4}>
-
+                
                 </Grid.Column>
             </Grid>
         );
