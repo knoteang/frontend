@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Button, Divider, Container, Segment } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container, Segment ,Message } from 'semantic-ui-react'
 
 import logo from '../Profile/steve.jpg';
 import { publishPost, getAllPosts } from '../../api'
@@ -58,14 +58,12 @@ class Post extends Component {
                           
                         <div class="field">
 
-                        <div class="ui message">
-               <div class="header">Your Post </div>
-               <div class="content">
-                   <p></p>
-                   </div>
-                  </div>
+                        <Message positive>
+                   <Message.Header>Header </Message.Header>
+                         <p></p>
+                  </Message>
 
-
+                  
 
                             <label>Comment</label>
                             <textarea rows="2" cols="50" name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
