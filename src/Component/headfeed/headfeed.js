@@ -11,6 +11,10 @@ class HeadFeed extends Component {
     window.location.assign('/')
   }
 
+  adminGo(e) {
+    window.location.assign("/admin")
+  }
+
   setTemUser(e) {
     localStorage.setItem('temUser', JSON.parse(localStorage.getItem('profileUser')).username)
   }
@@ -25,7 +29,10 @@ class HeadFeed extends Component {
               <a class="header item" href="/Profile" onClick={this.setTemUser}>{JSON.parse(localStorage.getItem('profileUser')).username}</a>
               <Dropdown text="Setting" pointing className='link item'>
                 <Dropdown.Menu>
-                <Dropdown.Item>Admin</Dropdown.Item>
+
+                  {JSON.parse(localStorage.getItem('profileUser')).status == "admin" ? (
+                    <Dropdown.Item><Button onClick={this.adminGo}>Admin</Button></Dropdown.Item>
+                  ) : null}
                   <Dropdown.Item><ModalEdit /></Dropdown.Item>
 
                 </Dropdown.Menu>

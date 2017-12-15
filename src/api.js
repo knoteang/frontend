@@ -16,10 +16,7 @@ export const loginLocal = (username, password) => {  // func login
 }
 
 export const getUserOne = (username) => {  // func login 
-  const data = {
-    username: username
-  }
-  return axiosInstance.post('/api/user/getUserOne', data) // request post to login   data= username and password
+  return axiosInstance.get('/api/user/getUserOne/' + username) // request post to login   data= username and password
     .then(response => response.data)
     .catch(error => error.response)
 }

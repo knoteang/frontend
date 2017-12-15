@@ -50,7 +50,6 @@ class TableUser extends Component {
                                 <Table.HeaderCell>User</Table.HeaderCell>
                                 <Table.HeaderCell>Firstname</Table.HeaderCell>
                                 <Table.HeaderCell>Lastname</Table.HeaderCell>
-                                <Table.HeaderCell>id</Table.HeaderCell>
                                 <Table.HeaderCell textAlign='center'>Status</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
@@ -62,7 +61,6 @@ class TableUser extends Component {
                                         <Table.Cell>{user.username}</Table.Cell>
                                         <Table.Cell>{user.firstName}</Table.Cell>
                                         <Table.Cell>{user.lastName}</Table.Cell>
-                                        <Table.Cell>{user._id}</Table.Cell>
                                         <Table.Cell textAlign='center'>
                                             <Button name={user._id} color='red' onClick={this.onSubmit} inverted>
                                                 <Icon name='cancel' /> Delete
