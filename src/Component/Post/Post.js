@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Icon, Grid, Button, Divider, Container, Segment } from 'semantic-ui-react'
 
 import logo from '../Profile/steve.jpg';
-import { publishPost, getAllPosts } from '../../api'
+import { publishPostComments, getComments, getTopic } from '../../api'
 import PostLeft from './PostLeft'
 
 import PostRight from './PostRight'
@@ -13,7 +13,9 @@ class Post extends Component {
         super();
         this.state = { // set state can use in class component only
             content: '',
-            allPosts: []
+            allPosts: [],
+            contentT: '',
+            author: ''
         }
         this.onTextChange = this.onTextChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -28,21 +30,32 @@ class Post extends Component {
 
     onSubmit(e) {
         e.preventDefault()
-        publishPost(this.state.content).then(() => { this.getPosts() })
+        publishPostComments(this.state.content, "comment", ).then(() => { this.getComments() })
     }
 
-    getPosts = () => {
-        getAllPosts()
+    getComments = () => {
+        getComments()
             .then(data => this.setState({ allPosts: data }))
             .catch(err => console.error('Something went wrong.'))
     }
 
-    componentDidMount() { // when render finish call is func
-        this.getPosts()
+    getTopic = () => {
+        getTopic()
+            .then(response => {
+                this.state.contentT = response.content
+                this.state.author = response.author
+                this.getComments()
+            })
+            .catch(err => console.error('Something went wrong.'))
+    }
+
+    componentWillMount() { // when render finish call is func
+        this.getTopic()
     }
 
     render() {
-        const posts = this.state.allPosts
+        const comments = this.state.allPosts
+        console.log(this.state)
         return (
             < Grid >
 
@@ -55,15 +68,14 @@ class Post extends Component {
                 <Grid.Column width={8} ><Segment raised>
 
                     <div class="ui form" >
-                          
-                        <div class="field">
 
-                        <div class="ui message">
-               <div class="header">Your Post </div>
-               <div class="content">
-                   <p></p>
-                   </div>
-                  </div>
+                        <div class="field">
+                            <div class="ui message">
+                                <div class="header">{this.state.author} </div>
+                                <div class="content">
+                                    <p>{this.state.contentT}</p>
+                                </div>
+                            </div>
 
 
 
@@ -86,8 +98,8 @@ class Post extends Component {
                     </div>
 
                     <Divider />
-                    {posts.length >= 0 ? //in { } is logic
-                        posts.map(post =>
+                    {comments.length >= 0 ? //in { } is logic
+                        comments.map(comment =>
                             <div className='getallpost'>
                                 <div class="ui comments">
                                     <div class="comment">
@@ -95,12 +107,12 @@ class Post extends Component {
                                             <img class="ui medium image" src={logo} />
                                         </a>
                                         <div class="content">
-                                            <a class="author">{post.author}</a>
+                                            <a class="author">{comment.author}</a>
                                             <div class="metadata">
-                                                <span class="date">{post.time}</span>
+                                                <span class="date">{comment.time}</span>
                                             </div>
                                             <div class="text">
-                                                {post.content}
+                                                {comment.content}
                                             </div>
 
 
@@ -118,7 +130,7 @@ class Post extends Component {
 
 
                 <Grid.Column width={4}>
-                <PostRight/>
+                    <PostRight />
                 </Grid.Column>
 
             </Grid >

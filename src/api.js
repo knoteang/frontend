@@ -33,10 +33,23 @@ export const loginOauth = (pt) => {
 
 ////////
 
-export const publishPost = (content) => {
+export const publishPost = (content, typeP) => {
   const data = {
     content: content,
-    author: JSON.parse(localStorage.getItem('profileUser')).username
+    author: JSON.parse(localStorage.getItem('profileUser')).username,
+    type: typeP
+  }
+  return axiosInstance.post('api/post/create/', data)
+    .then(data => data)
+    .catch(error => error.response)
+}
+
+export const publishPostComments = (content, typeP) => {
+  const data = {
+    content: content,
+    author: JSON.parse(localStorage.getItem('profileUser')).username,
+    type: typeP,
+    reference: localStorage.getItem('post_id')
   }
   return axiosInstance.post('api/post/create/', data)
     .then(data => data)
@@ -54,5 +67,17 @@ export const register = (dataR) => {
   const data = dataR
   return axiosInstance.post('/api/user/signup', data)
     .then(data => data)
+    .catch(error => error.response)
+}
+
+export const getComments = () => {
+  return axiosInstance.get('api/post/getcomment/' + localStorage.getItem('post_id'))
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
+export const getTopic = () => {
+  return axiosInstance.get('api/post/id/' + localStorage.getItem('post_id'))
+    .then(response => response.data)
     .catch(error => error.response)
 }
