@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Button, Divider, Container, Segment, Form, Message } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Comment } from 'semantic-ui-react'
 import { publishPost, getAllPosts } from '../../api'
 
+import pic from '../Profile/steve.jpg'
 import PostLeft from '../Post/PostLeft'
 import PostRight from '../Post/PostRight'
 class PostCom extends Component {
@@ -79,19 +80,35 @@ class PostCom extends Component {
 
                     {posts.length >= 0 ? //in { } is logic
                         posts.map(post =>
-                            <Message color='teal' size='big'>
 
-                                <Button.Group basic size='small' floated='right'>
-                                    <Button icon='delete' />
-                                    <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
-                                </Button.Group>
+                            <Segment raised>
+                                <div class="ui form">
+                                    <div class="field">
+                                        <div className='getallpost'>
+                                            <div class="ui comments">
+                                                <div class="comment">
+                                                    <a class="avatar">
+                                                        <img class="ui medium image" src={pic} />
+                                                    </a>
+                                                    <div class="content">
+                                                        <a class="author">{post.author}</a>
+                                                        <div class="text">
+                                                            {post.content}
+                                                            
+                                                            <Button.Group basic size='small' floated="right">
+                                                                <Button icon='delete' />
+                                                                <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
+                                                            </Button.Group> <Divider/>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Segment>
 
-                                <Message.Header>{post.author}</Message.Header>
-
-                                <p>{post.content}</p>
-
-                            </Message>
                         )
                         : null
                     }

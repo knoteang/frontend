@@ -79,7 +79,7 @@ class User extends Component {
         <div class="content">
           <a class="author">Christian Rocha</a>
           <div class="text">
-            I'm very interested in this motherboard. Do you know if it'd work in a Intel LGA775 CPU socket?
+            I'm very interested in this motherboard. Do you know if it'd work in a Intel LGA775 CPU socket?I'm very interested in this motherboard. Do you know if it'd work in a Intel LGA775 CPU socket?I'm very interested in this motherboard. Do you know if it'd work in a Intel LGA775 CPU socket?I'm very interested in this motherboard. Do you know if it'd work in a Intel LGA775 CPU socket?
           </div>
         </div>
       </div>
