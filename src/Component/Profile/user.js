@@ -10,7 +10,11 @@ class User extends Component {
     super();
     this.state = {
       allPosts: [],
-      user: []
+      fn: '',
+      ln: '',
+      us: '',
+      mail: '',
+      ph: '',
     }
     this.setID = this.setID.bind(this)
   }
@@ -22,23 +26,28 @@ class User extends Component {
   getUser = () => {
     //alert(localStorage.getItem('temUser'))
     getUserOne(localStorage.getItem('temUser'))
-      .then(data => console.log)
-      .then(this.getPosts())
+      .then(data => {
+        this.state.fn = data.firstName
+        this.state.ln = data.lastName
+        this.state.us = data.username
+        this.state.mail = data.email
+        this.state.ph = data.phone
+      })
   }
 
   getPosts = () => {
     getMyPost()
       .then(data => this.setState({ allPosts: data }))
       .catch(err => console.error('Something went wrong.'))
+      .then(this.getUser())
   }
 
   componentWillMount() { // when render finish call is func
-    this.getUser()
+    this.getPosts()
   }
 
   render() {
     const posts = this.state.allPosts
-    const userW = this.state.user
     return (
 
       <div className="Profile">
@@ -74,34 +83,30 @@ class User extends Component {
                   <div class="content">
                     <a class="header" href="/Profile">{localStorage.getItem('temUser')}</a>
                   </div>
-                  {userW.length >= 0 ? //in { } is logic
-                    userW.map(userQ =>
-                      <div class="content">
-                        <div class="meta">{userQ.firstName} {userQ.lastName}</div>
-                        <div class="description">
+
+                  <div class="content">
+                    <div class="meta">{this.state.fn} {this.state.ln}</div>
+                    <div class="description">
 
 
-                          <List>
-                            <List.Item>
-                              <List.Icon name='users' />
-                              <List.Content>{userQ.username}</List.Content>
-                            </List.Item>
-                            <List.Item>
-                              <List.Icon name='mail' />
-                              <List.Content>{userQ.mail}</List.Content>
-                            </List.Item>
+                      <List>
+                        <List.Item>
+                          <List.Icon name='users' />
+                          <List.Content>{this.state.us}</List.Content>
+                        </List.Item>
+                        <List.Item>
+                          <List.Icon name='mail' />
+                          <List.Content>{this.state.mail}</List.Content>
+                        </List.Item>
 
-                            <List.Item>
-                              <List.Icon name='phone' />
-                              <List.Content>{userQ.phone}</List.Content>
-                            </List.Item>
-                          </List>
+                        <List.Item>
+                          <List.Icon name='phone' />
+                          <List.Content>{this.state.ph}</List.Content>
+                        </List.Item>
+                      </List>
 
-                        </div>
-                      </div>
-                    )
-                    : null
-                  }
+                    </div>
+                  </div>
                 </div>
 
               </div>
