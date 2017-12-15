@@ -4,9 +4,9 @@ import { Table, Grid, Button, Modal, Header, Icon } from 'semantic-ui-react'
 class TableUser extends Component {
 
     state = { open: false }
-    
-      show = size => () => this.setState({ size, open: true })
-      close = () => this.setState({ open: false })
+
+    show = size => () => this.setState({ size, open: true })
+    close = () => this.setState({ open: false })
 
     render() {
         const { open, size } = this.state
@@ -31,24 +31,22 @@ class TableUser extends Component {
                                 <Table.Cell>John</Table.Cell>
                                 <Table.Cell textAlign='right'>
 
-                                <div>
-                                <Button color="red" onClick={this.show('tiny')}>Delete</Button>
-                        
-                                <Modal size={size} open={open} onClose={this.close}>
-                                  <Modal.Header>
-                                    Delete This Account
+                                    <div>
+                                        <Button color="red" onClick={this.show('tiny')}>Delete</Button>
+
+                                        <Modal size={size} open={open} onClose={this.close}>
+                                            <Modal.Header>
+                                                Delete This Account
                                   </Modal.Header>
-                                  <Modal.Content>
-                                    <p>Are you sure you want to delete this account</p>
-                                  </Modal.Content>
-                                  <Modal.Actions>
-                                    <Button negative>
-                                      No
-                                    </Button>
-                                    <Button positive icon='checkmark' labelPosition='right' content='Yes' />
-                                  </Modal.Actions>
-                                </Modal>
-                              </div>
+                                            <Modal.Content>
+                                                <p>Are you sure you want to delete this account</p>
+                                            </Modal.Content>
+                                            <Modal.Actions>
+                                                <Button positive icon='checkmark' labelPosition='right' content='Yes' />
+                                                <Button negative onClick={this.close}>No</Button>
+                                            </Modal.Actions>
+                                        </Modal>
+                                    </div>
 
                                 </Table.Cell>
                             </Table.Row>
@@ -59,7 +57,7 @@ class TableUser extends Component {
                 </Grid.Column>
 
                 <Grid.Column width={4}>
-                
+
                 </Grid.Column>
             </Grid>
         );

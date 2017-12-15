@@ -89,7 +89,7 @@ export const search = (word) => {
 }
 
 export const getMyPost = () => {
-  return axiosInstance.get('api/post/mypost/' + JSON.parse(localStorage.getItem('profileUser')).username)
+  return axiosInstance.get('api/post/mypost/' + localStorage.getItem('temUser'))
     .then(response => response.data)
     .catch(error => error.response)
 }
