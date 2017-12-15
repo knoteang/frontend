@@ -17,6 +17,7 @@ class PostCom extends Component {
         this.onTextChange = this.onTextChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
         this.onSearch = this.onSearch.bind(this)
+        this.search = this.search.bind(this)
         this.setID = this.setID.bind(this)
     }
     onTextChange(e) {
@@ -28,7 +29,6 @@ class PostCom extends Component {
     setID(id) {
         localStorage.setItem('post_id', id)
         //this.props.history.replace('/Comment')
-        console.log(localStorage.getItem("post_id"))
         window.location.assign("/Comment")
     }
 
@@ -38,7 +38,12 @@ class PostCom extends Component {
         this.setState({ [name]: value })
     }
 
-    search = () => {
+    setTemUser(e) {
+        localStorage.setItem('temUser', e.target.name)
+        window.location.assign("/Profile")
+    }
+
+    search(e) {
         search(this.state.sw)
             .then(data => this.setState({ allPosts: data }))
             .catch(err => console.error('Something went wrong.'))
@@ -73,9 +78,8 @@ class PostCom extends Component {
 
                 <Grid.Column width={8} >
                     <Menu.Item>
-                    
-                        <Input  size="large"  placeholder='Search...' name='sw' onChange={this.onSearch} />
-                        <Button circular icon='search' />
+                        <Input size="large" placeholder='Search...' name='sw' value={this.state.sw} onChange={this.onSearch} />
+                        <Button circular icon='search' onClick={this.search}></Button>
                     </Menu.Item>
                     <Segment raised>
                         <div class="ui form" >
@@ -110,7 +114,7 @@ class PostCom extends Component {
                                                         <img class="ui medium image" src={pic} />
                                                     </a>
                                                     <div class="content">
-                                                        <a class="author">{post.author}</a>
+                                                        <a class="author" name={post.author} onClick={this.setTemUser}>{post.author}</a>
                                                         <div class="text">
                                                             {post.content}
 

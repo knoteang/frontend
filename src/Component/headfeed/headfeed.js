@@ -11,6 +11,10 @@ class HeadFeed extends Component {
     window.location.assign('/')
   }
 
+  setTemUser(e) {
+    localStorage.setItem('temUser', JSON.parse(localStorage.getItem('profileUser')).username)
+  }
+
   render() {
     return (
       <div class="ui borderless huge menu">
@@ -19,7 +23,7 @@ class HeadFeed extends Component {
             <a class="header item" href="/Feed">PS POST <i class="small chat icon"></i></a>
             <div class="right menu">
 
-              <a class="header item" href="/Profile" onClick={localStorage.setItem("temUser", JSON.parse(localStorage.getItem('profileUser')).username)}>{JSON.parse(localStorage.getItem('profileUser')).username}</a>
+              <a class="header item" href="/Profile" onClick={this.setTemUser}>{JSON.parse(localStorage.getItem('profileUser')).username}</a>
               <Dropdown text="Setting" pointing className='link item'>
                 <Dropdown.Menu>
 
