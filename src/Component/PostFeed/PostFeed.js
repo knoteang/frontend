@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Button, Divider, Container, Segment, Form, Message } from 'semantic-ui-react'
-import { publishPost, getAllPosts } from '../../api'
+import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Input, Menu } from 'semantic-ui-react'
+import { publishPost, getAllPosts, search } from '../../api'
 
+import pic from '../Profile/steve.jpg'
 import PostLeft from '../Post/PostLeft'
 import PostRight from '../Post/PostRight'
 class PostCom extends Component {
@@ -10,16 +11,17 @@ class PostCom extends Component {
         super();
         this.state = { // set state can use in class component only
             content: '',
+            sw: '',
             allPosts: []
         }
         this.onTextChange = this.onTextChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onSearch = this.onSearch.bind(this)
         this.setID = this.setID.bind(this)
     }
     onTextChange(e) {
         const name = e.target.name
         const value = e.target.value
-
         this.setState({ [name]: value })
     }
 
@@ -28,6 +30,18 @@ class PostCom extends Component {
         //this.props.history.replace('/Comment')
         console.log(localStorage.getItem("post_id"))
         window.location.assign("/Comment")
+    }
+
+    onSearch(e) {
+        const name = e.target.name
+        const value = e.target.value
+        this.setState({ [name]: value })
+    }
+
+    search = () => {
+        search(this.state.sw)
+            .then(data => this.setState({ allPosts: data }))
+            .catch(err => console.error('Something went wrong.'))
     }
 
     onSubmit(e) {
@@ -57,41 +71,63 @@ class PostCom extends Component {
                 </Grid.Column>
 
 
-                <Grid.Column width={8} ><Segment raised>
-                    <div class="ui form" >
-                        <div class="field">
-                            <label>What's new?</label>
-                            <textarea autoHeight name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
+                <Grid.Column width={8} >
+                    <Menu.Item>
+                    
+                        <Input  size="large"  placeholder='Search...' name='sw' onChange={this.onSearch} />
+                        <Button circular icon='search' />
+                    </Menu.Item>
+                    <Segment raised>
+                        <div class="ui form" >
+                            <div class="field">
+                                <label>What's new?</label>
+                                <textarea autoHeight name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
+                            </div>
+
+                            <br />
+
+                            <Container textAlign='right' >
+                                <Button animated textAlign='right' onClick={this.onSubmit}>
+                                    <Button.Content visible >POST</Button.Content>
+                                    <Button.Content hidden>
+                                        <Icon name='comment' />
+                                    </Button.Content>
+                                </Button>
+                            </Container>
                         </div>
-
-                        <br />
-
-                        <Container textAlign='right' >
-                            <Button animated textAlign='right' onClick={this.onSubmit}>
-                                <Button.Content visible >POST</Button.Content>
-                                <Button.Content hidden>
-                                    <Icon name='comment' />
-                                </Button.Content>
-                            </Button>
-                        </Container>
-                    </div>
-                </Segment>
+                    </Segment>
 
                     {posts.length >= 0 ? //in { } is logic
                         posts.map(post =>
-                            <Message color='teal' size='big'>
 
-                                <Button.Group basic size='small' floated='right'>
-                                    <Button icon='delete' />
-                                    <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
-                                </Button.Group>
+                            <Segment raised>
+                                <div class="ui form">
+                                    <div class="field">
+                                        <div className='getallpost'>
+                                            <div class="ui comments">
+                                                <div class="comment">
+                                                    <a class="avatar">
+                                                        <img class="ui medium image" src={pic} />
+                                                    </a>
+                                                    <div class="content">
+                                                        <a class="author">{post.author}</a>
+                                                        <div class="text">
+                                                            {post.content}
 
+                                                            <Button.Group basic size='small' floated="right">
+                                                                <Button icon='delete' />
+                                                                <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
+                                                            </Button.Group> <Divider />
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                <Message.Header>{post.author}</Message.Header>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Segment>
 
-                                <p>{post.content}</p>
-
-                            </Message>
                         )
                         : null
                     }

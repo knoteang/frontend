@@ -22,9 +22,12 @@ const Routes = () => {
           <Switch>
             <Route exact path="/Feed" component={PostFeed} />
             <Route exact path="/Profile" component={Profile} />
-            <Route exact path="/Admin" component={Admin} />
             <Route exact path="/Comment" component={Feed} />
-            
+            {JSON.parse(localStorage.getItem('profileUser')).status == "user" ? (
+              <Redirect to="/Feed" />
+            ) : (
+                <Route exact path="/Admin" component={Admin} />
+              )}
           </Switch>
         )}
     </Switch>

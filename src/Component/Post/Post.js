@@ -69,21 +69,27 @@ class Post extends Component {
 
                     <div class="ui form" >
 
-                        <div class="field">
-                            <Message positive>
-                                <Message.Header>{this.state.author} </Message.Header>
-                                <p>{this.state.contentT}</p>
-                            </Message>
-
-
-                            <label>Comment</label>
+                                    <div class="field">
+                                    <div class="ui secondary segment">
+                                        <div className='getallpost'>
+                                            <div class="ui comments">
+                                                <div class="comment">
+                                                   
+                                                    <div class="content">
+                                                        <a class="author">{this.state.author} </a>
+                                                        <div class="text">
+                                                        {this.state.contentT}
+    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <label>Comment</label>
                             <textarea rows="2" cols="50" name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
-                        </div>
-
+                                    </div>
                         <br />
-
-
-
                         <Container textAlign='right' >
                             <Button animated textAlign='right' onClick={this.onSubmit}>
                                 <Button.Content visible >POST</Button.Content>

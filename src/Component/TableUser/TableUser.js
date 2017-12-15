@@ -3,13 +3,32 @@ import { Table, Grid, Button, Modal, Header, Icon } from 'semantic-ui-react'
 
 class TableUser extends Component {
 
-    state = { open: false }
-    
-      show = size => () => this.setState({ size, open: true })
-      close = () => this.setState({ open: false })
+    constructor() {
+        super();
+        this.state = {
+            modalOpen: false,
+        }
+        //this.onSubmit = this.onSubmit.bind(this)
+        // this.onTextChange = this.onTextChange.bind(this)
+    }
+    show = dimmer => () => this.setState({ dimmer, open: true })
+    close = () => this.setState({ open: false })
+
+
+    // onSubmit(e) {
+    //     e.preventDefault()
+    //     console.log(this.state)
+    //     postEdit(this.state.firstName, this.state.lastName, this.state.email, this.state.phone)
+    //       .then(this.handleClose)
+    //   }
+
+
+
+    handleOpen = () => this.setState({ modalOpen: true })
+    handleClose = () => this.setState({ modalOpen: false })
 
     render() {
-        const { open, size } = this.state
+        const { open, dimmer } = this.state
 
         return (
             <Grid>
@@ -31,24 +50,29 @@ class TableUser extends Component {
                                 <Table.Cell>John</Table.Cell>
                                 <Table.Cell textAlign='right'>
 
-                                <div>
-                                <Button color="red" onClick={this.show('tiny')}>Delete</Button>
-                        
-                                <Modal size={size} open={open} onClose={this.close}>
-                                  <Modal.Header>
-                                    Delete This Account
-                                  </Modal.Header>
-                                  <Modal.Content>
-                                    <p>Are you sure you want to delete this account</p>
-                                  </Modal.Content>
-                                  <Modal.Actions>
-                                    <Button negative>
-                                      No
-                                    </Button>
-                                    <Button positive icon='checkmark' labelPosition='right' content='Yes' />
-                                  </Modal.Actions>
-                                </Modal>
-                              </div>
+
+
+                                    <Modal
+                                        trigger={<Button color="red" onClick={this.handleOpen}>Delete</Button>}
+                                        open={this.state.modalOpen}
+                                        onClose={this.handleClose}
+
+                                    >
+                                        <Modal.Header>
+                                            Delete This Account
+                                            </Modal.Header>
+                                        <Modal.Content>
+                                            <p>Are you sure you want to delete this account</p>
+                                        </Modal.Content>
+                                        <Modal.Actions>
+                                            <Button color='green' onClick={this.onSubmit} inverted>
+                                                <Icon name='checkmark' /> Confirm
+                                                </Button>
+                                            <Button color='red' onClick={this.handleClose} inverted>
+                                                <Icon name='checkmark' /> Cancel
+                                            </Button>
+                                        </Modal.Actions>
+                                    </Modal>
 
                                 </Table.Cell>
                             </Table.Row>
@@ -59,7 +83,7 @@ class TableUser extends Component {
                 </Grid.Column>
 
                 <Grid.Column width={4}>
-                
+
                 </Grid.Column>
             </Grid>
         );
