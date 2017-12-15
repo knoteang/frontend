@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './headfeed.css'
-import { Input, Menu } from 'semantic-ui-react'
+import { Input, Menu ,Dropdown ,Button} from 'semantic-ui-react'
+
+
+import ModalEdit from '../edit/edit'
 class HeadFeed extends Component {
 
   signOut = event => {
@@ -18,8 +21,17 @@ class HeadFeed extends Component {
               <Input icon='search' placeholder='Search...' />
             </Menu.Item>
             <div class="right menu">
+            
+            <a class="header item" href="/Profile">{JSON.parse(localStorage.getItem('profileUser')).username}</a>
+            <Dropdown text="Setting" pointing className='link item'>
+            <Dropdown.Menu>
+            
+              <Dropdown.Item><ModalEdit/></Dropdown.Item>
+              
+              </Dropdown.Menu>
+              
+              </Dropdown>
 
-              <a class="active item" href="/Profile">{JSON.parse(localStorage.getItem('profileUser')).username}</a>
               <a class="item" onClick={this.signOut}>Log out</a>
             </div>
           </div>
