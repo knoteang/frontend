@@ -50,9 +50,9 @@ class User extends Component {
 
   <div class="content">
 
-      <a class="ui header" href="#link">Edit Profile
+      
         <ModalEdit/>
-      </a>
+      
 
 
       <div class="description">
