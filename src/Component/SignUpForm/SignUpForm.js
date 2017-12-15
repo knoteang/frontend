@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Header, Segment, Container, Icon } from 'semantic-ui-react'
+import { Button, Form, Header, Segment, Container, Icon ,Grid } from 'semantic-ui-react'
 import './SignUpForm.css'
 import { register } from '../../api'
 
@@ -45,31 +45,36 @@ class SignUpForm extends Component {
 
             <div className="S">
 
-                <Form>
+
+<Grid>
+    <Grid.Column width={2}>
+      
+    </Grid.Column>
+    <Grid.Column width={12}>
+                 <Form>
                     <Header as='h2' attached='top'>
                         SIGN UP WITH YOUR E-MAIL  <Icon name='add user' />
                     </Header>
                     <Segment attached>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-      ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.
-      <Container text>
-
-                            <Form.Group>
+                       
                                 <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' onChange={this.onTextChange} required/>
                                 <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' onChange={this.onTextChange} required/>
                                 <Form.Input name="username" label='Username' placeholder='Username' type='text' onChange={this.onTextChange} required/>
-                            </Form.Group>
-
-                            <Form.Group>
                                 <Form.Input name="password" label='Password' placeholder='Password' type='password' onChange={this.onTextChange} required/>
                                 <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='text' onChange={this.onTextChange} required/>
                                 <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' onChange={this.onTextChange} required/>
-                            </Form.Group>
-
-                            <a href="/"><Button color='red' type='sumbit' onClick={this.onSubmit}>Submit</Button></a>  </Container> </Segment>
+                            
+                            <a href="/"><Button color='red' type='sumbit' onClick={this.onSubmit}>Submit</Button></a>   </Segment>
                 </Form >
+    </Grid.Column>
+    <Grid.Column width={2}>
+    
+    </Grid.Column>
+  </Grid>
 
+
+
+             
             </div>
         )
     }

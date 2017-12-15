@@ -92,7 +92,7 @@ class Post extends Component {
                         <br />
                         <Container textAlign='right' >
                             <Button animated textAlign='right' onClick={this.onSubmit}>
-                                <Button.Content visible >POST</Button.Content>
+                                <Button.Content visible >COMMENT</Button.Content>
                                 <Button.Content hidden>
                                     <Icon name='comment' />
                                 </Button.Content>

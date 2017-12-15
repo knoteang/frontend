@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Icon, Grid, Button, Divider, Container, Segment, Popup, Modal, Header } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container, Segment, Popup, Modal, Header, List } from 'semantic-ui-react'
 import { getMyPost } from '../../api'
 
-import pic from './steve.jpg'
+import pic from './daniel.jpg'
 import './user.css'
 class User extends Component {
 
@@ -65,15 +65,29 @@ class User extends Component {
                   />
                   <div class="content">
                     <a class="header" href="/Profile">{JSON.parse(localStorage.getItem('profileUser')).username}</a>
-                    <div class="meta">
 
-                    </div>
                   </div>
-
                   <div class="content">
-
+                    <div class="meta">Fname Lname</div>
                     <div class="description">
-                      <p></p>
+
+
+                      <List>
+                        <List.Item>
+                          <List.Icon name='users' />
+                          <List.Content>username</List.Content>
+                        </List.Item>
+                        <List.Item>
+                          <List.Icon name='mail' />
+                          <List.Content>maillll</List.Content>
+                        </List.Item>
+                        
+                        <List.Item>
+                          <List.Icon name='phone' />
+                          <List.Content>phone</List.Content>
+                        </List.Item>
+                      </List>
+
                     </div>
                   </div>
                 </div>
@@ -100,9 +114,9 @@ class User extends Component {
                                   <div class="text">
                                     {post.content}
                                   </div>
-                                  <Button circular icon='eye' floated='right' name={post._id} onClick={(e) => this.setID(post._id)} />
-                                </div>
-                                <Divider />
+                                  <Button circular icon='eye' size="mini" name={post._id} onClick={(e) => this.setID(post._id)} />
+
+                                  <Divider /></div>
                               </div>
 
                             )

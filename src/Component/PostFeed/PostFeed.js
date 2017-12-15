@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Input, Menu } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Input, Menu,Rating } from 'semantic-ui-react'
 import { publishPost, getAllPosts, search } from '../../api'
 
-import pic from '../Profile/steve.jpg'
+import pic from '../Profile/daniel.jpg'
 import PostLeft from '../Post/PostLeft'
 import PostRight from '../Post/PostRight'
 class PostCom extends Component {
@@ -114,10 +114,13 @@ class PostCom extends Component {
                                                         <div class="text">
                                                             {post.content}
 
-                                                            <Button.Group basic size='small' floated="right">
-                                                                <Button icon='delete' />
-                                                                <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
-                                                            </Button.Group> <Divider />
+                                                            <Divider/>
+                                                            <Button.Group basic size='mini' floated="right">
+                                      <Button icon='delete' />
+                                       <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
+                                       </Button.Group> 
+                                       <Rating icon='heart' defaultRating={1} maxRating={3} />
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,6 +129,8 @@ class PostCom extends Component {
                                         </div>
                                     </div>
                                 </div>
+                               
+
                             </Segment>
 
                         )
