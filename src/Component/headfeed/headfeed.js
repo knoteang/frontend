@@ -22,7 +22,6 @@ class HeadFeed extends Component {
           <div class="computer only row">
             <a class="header item" href="/Feed">PS POST <i class="small chat icon"></i></a>
             <div class="right menu">
-
               <a class="header item" href="/Profile" onClick={this.setTemUser}>{JSON.parse(localStorage.getItem('profileUser')).username}</a>
               <Dropdown text="Setting" pointing className='link item'>
                 <Dropdown.Menu>
