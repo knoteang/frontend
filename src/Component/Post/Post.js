@@ -49,6 +49,11 @@ class Post extends Component {
             .catch(err => console.error('Something went wrong.'))
     }
 
+    setTemUser(e) {
+        localStorage.setItem('temUser', e.target.name)
+        window.location.assign("/Profile")
+    }
+
     componentWillMount() { // when render finish call is func
         this.getTopic()
     }
@@ -69,26 +74,26 @@ class Post extends Component {
 
                     <div class="ui form" >
 
-                                    <div class="field">
-                                    <div class="ui secondary segment">
-                                        <div className='getallpost'>
-                                            <div class="ui comments">
-                                                <div class="comment">
-                                                   
-                                                    <div class="content">
-                                                        <a class="author">{this.state.author} </a>
-                                                        <div class="text">
-                                                        {this.state.contentT}
-    
-                                                        </div>
-                                                    </div>
+                        <div class="field">
+                            <div class="ui secondary segment">
+                                <div className='getallpost'>
+                                    <div class="ui comments">
+                                        <div class="comment">
+
+                                            <div class="content">
+                                                <a class="author">{this.state.author} </a>
+                                                <div class="text">
+                                                    {this.state.contentT}
+
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
-                                        <label>Comment</label>
-                            <textarea rows="2" cols="50" name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
                                     </div>
+                                </div>
+                            </div>
+                            <label>Comment</label>
+                            <textarea rows="2" cols="50" name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
+                        </div>
                         <br />
                         <Container textAlign='right' >
                             <Button animated textAlign='right' onClick={this.onSubmit}>
@@ -110,7 +115,7 @@ class Post extends Component {
                                             <img class="ui medium image" src={logo} />
                                         </a>
                                         <div class="content">
-                                            <a class="author">{comment.author}</a>
+                                            <a class="author" name={comment.author} onClick={this.setTemUser}>{comment.author}</a>
                                             <div class="metadata">
                                                 <span class="date">{comment.time}</span>
                                             </div>

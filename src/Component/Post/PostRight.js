@@ -22,23 +22,25 @@ export default class PostRight extends Component {
         <Accordion inverted>
           <Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
             <Icon name='dropdown' />
-            What is a dog?
+            What is Social Network ?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
             <p>
-              A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a
-              {' '}welcome guest in many households across the world.
-            </p>
+            a dedicated website  that enables users to communicate 
+           with each other by posting information, comments.  network of social
+            interactions and personal relationships.
+            </p> 
           </Accordion.Content>
 
           <Accordion.Title active={activeIndex === 1} index={1} onClick={this.handleClick}>
             <Icon name='dropdown' />
-            What kinds of dogs are there?
+            What's about PS POST ?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 1}>
             <p>
-              There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of
-              {' '}dog that they find to be compatible with their own lifestyle and desires from a companion.
+            PS POST community is a place where you can connect 
+            with others to find someone who interesting and share
+             your opinion or experience.
             </p>
           </Accordion.Content>
 

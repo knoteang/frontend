@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Icon, Grid, Button, Divider, Container, Segment, Popup, Modal, Header, List } from 'semantic-ui-react'
-import { getMyPost } from '../../api'
+import { Icon, Grid, Rating, Button, Divider, Container, Segment, Popup, Modal, Header, List } from 'semantic-ui-react'
+import { getMyPost, getUserOne } from '../../api'
 
 import pic from './daniel.jpg'
 import './user.css'
@@ -9,13 +9,21 @@ class User extends Component {
   constructor() {
     super();
     this.state = {
-      allPosts: []
+      allPosts: [],
+      user: []
     }
     this.setID = this.setID.bind(this)
   }
   setID(id) {
     localStorage.setItem('post_id', id)
     window.location.assign("/Comment")
+  }
+
+  getUser = () => {
+    //alert(localStorage.getItem('temUser'))
+    getUserOne(localStorage.getItem('temUser'))
+      .then(data => console.log)
+      .then(this.getPosts())
   }
 
   getPosts = () => {
@@ -25,21 +33,21 @@ class User extends Component {
   }
 
   componentWillMount() { // when render finish call is func
-    this.getPosts()
+    this.getUser()
   }
 
   render() {
     const posts = this.state.allPosts
-
+    const userW = this.state.user
     return (
 
       <div className="Profile">
 
-        <div class="ui grid massive message">
+        <div class="ui grid massive warning message">
           <div class="ui container">
             <div class="row">
               <div class="h1 ui huge header">
-                Hello, world!
+                PS POST
           </div>
 
 
@@ -64,35 +72,40 @@ class User extends Component {
                     size='large'
                   />
                   <div class="content">
-                    <a class="header" href="/Profile">{JSON.parse(localStorage.getItem('profileUser')).username}</a>
-
+                    <a class="header" href="/Profile">{localStorage.getItem('temUser')}</a>
                   </div>
-                  <div class="content">
-                    <div class="meta">Fname Lname</div>
-                    <div class="description">
+                  {userW.length >= 0 ? //in { } is logic
+                    userW.map(userQ =>
+                      <div class="content">
+                        <div class="meta">{userQ.firstName} {userQ.lastName}</div>
+                        <div class="description">
 
 
-                      <List>
-                        <List.Item>
-                          <List.Icon name='users' />
-                          <List.Content>username</List.Content>
-                        </List.Item>
-                        <List.Item>
-                          <List.Icon name='mail' />
-                          <List.Content>maillll</List.Content>
-                        </List.Item>
-                        
-                        <List.Item>
-                          <List.Icon name='phone' />
-                          <List.Content>phone</List.Content>
-                        </List.Item>
-                      </List>
+                          <List>
+                            <List.Item>
+                              <List.Icon name='users' />
+                              <List.Content>{userQ.username}</List.Content>
+                            </List.Item>
+                            <List.Item>
+                              <List.Icon name='mail' />
+                              <List.Content>{userQ.mail}</List.Content>
+                            </List.Item>
 
-                    </div>
-                  </div>
+                            <List.Item>
+                              <List.Icon name='phone' />
+                              <List.Content>{userQ.phone}</List.Content>
+                            </List.Item>
+                          </List>
+
+                        </div>
+                      </div>
+                    )
+                    : null
+                  }
                 </div>
 
               </div>
+
 
               <div class="nine wide column">
                 <Segment raised>
@@ -114,6 +127,7 @@ class User extends Component {
                                   <div class="text">
                                     {post.content}
                                   </div>
+                                  <Rating icon='heart' defaultRating={1} maxRating={3} />
                                   <Button circular icon='eye' size="mini" name={post._id} onClick={(e) => this.setID(post._id)} />
 
                                   <Divider /></div>

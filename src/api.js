@@ -16,10 +16,7 @@ export const loginLocal = (username, password) => {  // func login
 }
 
 export const getUserOne = (username) => {  // func login 
-  const data = {
-    username: username
-  }
-  return axiosInstance.post('/api/user/getUserOne', data) // request post to login   data= username and password
+  return axiosInstance.get('/api/user/getUserOne/' + username) // request post to login   data= username and password
     .then(response => response.data)
     .catch(error => error.response)
 }
@@ -101,6 +98,24 @@ export const search = (word) => {
 
 export const getMyPost = () => {
   return axiosInstance.get('api/post/mypost/' + localStorage.getItem('temUser'))
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
+export const getAllUsers = () => {
+  return axiosInstance.get('api/user/getuser/')
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
+export const deleteUser = (pt) => {
+  return axiosInstance.get('api/user/delete/' + pt)
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
+export const deletePost = (pt) => {
+  return axiosInstance.get('api/post/delete/' + pt)
     .then(response => response.data)
     .catch(error => error.response)
 }
