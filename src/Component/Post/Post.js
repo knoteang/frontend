@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Button, Divider, Container, Segment } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container, Segment, Message } from 'semantic-ui-react'
 
 import logo from '../Profile/steve.jpg';
 import { publishPostComments, getComments, getTopic } from '../../api'
@@ -70,13 +70,10 @@ class Post extends Component {
                     <div class="ui form" >
 
                         <div class="field">
-                            <div class="ui message">
-                                <div class="header">{this.state.author} </div>
-                                <div class="content">
-                                    <p>{this.state.contentT}</p>
-                                </div>
-                            </div>
-
+                            <Message positive>
+                                <Message.Header>{this.state.author} </Message.Header>
+                                <p>{this.state.contentT}</p>
+                            </Message>
 
 
                             <label>Comment</label>
