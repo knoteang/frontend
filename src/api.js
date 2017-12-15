@@ -81,3 +81,16 @@ export const getTopic = () => {
     .then(response => response.data)
     .catch(error => error.response)
 }
+
+export const postEdit = (firstName, lastName, email, phone) => {
+  const data = {
+    username: JSON.parse(localStorage.getItem('profileUser')).username,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    phone: phone
+  }
+  return axiosInstance.post('api/user/edit', data)
+    .then(response => response.data)
+    .catch(error => error.response)
+}
