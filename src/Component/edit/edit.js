@@ -1,12 +1,37 @@
 import React, { Component } from 'react';
 
 import { Icon, Button, Modal, Header, Form } from 'semantic-ui-react'
+import { postEdit } from '../../api'
 
 
 
 class ModalEdit extends Component {
 
-  state = { modalOpen: false }
+  constructor() {
+    super();
+    this.state = {
+      modalOpen: false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: ''
+    }
+    this.onSubmit = this.onSubmit.bind(this)
+    this.onTextChange = this.onTextChange.bind(this)
+  }
+
+
+  onTextChange(e) {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({ [name]: value })
+  }
+
+  onSubmit(e) {
+    e.preventDefault()
+    console.log(this.state)
+    postEdit(this.state.firstName, this.state.lastName, this.state.email, this.state.phone)
+  }
 
   handleOpen = () => this.setState({ modalOpen: true })
   handleClose = () => this.setState({ modalOpen: false })
@@ -23,26 +48,18 @@ class ModalEdit extends Component {
         <Header icon='browser' content='Edit Your Profile' />
         <Modal.Content>
 
-<Form>
-         
-            <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text'  />
-            <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' />
-            <Form.Input name="username" label='Username' placeholder='Username' type='text'/>
-       
-
-        
-            <Form.Input name="password" label='Password' placeholder='Password' type='password'  />
-            <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='text' />
-            <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text'/>
-         
-
-</Form>
+          <Form>
+            <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' value={this.state.firstName} onChange={this.onTextChange} />
+            <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' value={this.state.lastName} onChange={this.onTextChange} />
+            <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='text' value={this.state.email} onChange={this.onTextChange} />
+            <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' value={this.state.phone} onChange={this.onTextChange} />
+          </Form>
 
 
 
         </Modal.Content>
         <Modal.Actions>
-          <Button color='green' inverted>
+          <Button color='green' onClick={this.onSubmit} inverted>
             <Icon name='checkmark' /> Confirm
         </Button>
           <Button color='red' onClick={this.handleClose} inverted>
