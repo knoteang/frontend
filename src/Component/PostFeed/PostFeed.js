@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Input, Menu } from 'semantic-ui-react'
-import { publishPost, getAllPosts } from '../../api'
+import { publishPost, getAllPosts, search } from '../../api'
 
 import pic from '../Profile/steve.jpg'
 import PostLeft from '../Post/PostLeft'
@@ -11,6 +11,7 @@ class PostCom extends Component {
         super();
         this.state = { // set state can use in class component only
             content: '',
+            sw: '',
             allPosts: []
         }
         this.onTextChange = this.onTextChange.bind(this)
@@ -32,7 +33,9 @@ class PostCom extends Component {
     }
 
     onSearch(e) {
-
+        const name = e.target.name
+        const value = e.target.value
+        this.setState({ [name]: value })
     }
 
     onSubmit(e) {
@@ -50,6 +53,12 @@ class PostCom extends Component {
         this.getPosts()
     }
 
+    componentWillUpdate() {
+        search(this.state.sw)
+            .then(data => this.setState({ allPosts: data }))
+            .catch(err => console.error('Something went wrong.'))
+    }
+
     render() {
         const posts = this.state.allPosts
         return (
@@ -64,7 +73,7 @@ class PostCom extends Component {
 
                 <Grid.Column width={8} >
                     <Menu.Item>
-                        <Input fluid icon='search' size="large" placeholder='Search...' />
+                        <Input fluid icon='search' size="large" icon='search' placeholder='Search...' name='sw' onChange={this.onSearch} />
                     </Menu.Item>
                     <Segment raised>
                         <div class="ui form" >
