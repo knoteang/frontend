@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Header, Segment, Container, Icon ,Grid } from 'semantic-ui-react'
+import { Button, Form, Header, Segment, Container, Icon ,Grid,Input } from 'semantic-ui-react'
 import './SignUpForm.css'
 import { register } from '../../api'
 
@@ -61,7 +61,7 @@ class SignUpForm extends Component {
                                 <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' onChange={this.onTextChange} required/>
                                 <Form.Input name="username" label='Username' placeholder='Username' type='text' onChange={this.onTextChange} required/>
                                 <Form.Input name="password" label='Password' placeholder='Password' type='password' onChange={this.onTextChange} required/>
-                                <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='text' onChange={this.onTextChange} required/>
+                                <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='email' onChange={this.onTextChange} required/>
                                 <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' onChange={this.onTextChange} required/>
                             
                             <a href="/"><Button color='red' type='sumbit' onClick={this.onSubmit}>Submit</Button></a>   </Segment>
