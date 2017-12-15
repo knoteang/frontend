@@ -43,17 +43,7 @@ class User extends Component {
 
       <div className="Profile">
 
-        <div class="ui grid massive warning message">
-          <div class="ui container">
-            <div class="row">
-              <div class="h1 ui huge header">
-                PS POST
-          </div>
-
-
-            </div>
-          </div>
-        </div>
+       
         <div class="ui hidden divider"></div>
         <div class="ui container">
           <div class="ui stackable grid">

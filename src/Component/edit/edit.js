@@ -47,16 +47,17 @@ class ModalEdit extends Component {
       >
 
         <Modal.Content>
+          <Header>Edit Profile</Header><Divider/>
           <Grid>
             <Grid.Column width={2}>
 
             </Grid.Column>
             <Grid.Column width={12}>
               <Form>
-                <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' value={JSON.parse(localStorage.getItem('profileUser')).firstName} onChange={this.onTextChange} />
-                <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' value={JSON.parse(localStorage.getItem('profileUser')).lastName} onChange={this.onTextChange} />
-                <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='text' value={JSON.parse(localStorage.getItem('profileUser')).email} onChange={this.onTextChange} />
-                <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' value={JSON.parse(localStorage.getItem('profileUser')).phone} onChange={this.onTextChange} />
+                <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' value={JSON.parse(localStorage.getItem('profileUser')).firstName} onChange={this.onTextChange} required />
+                <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' value={JSON.parse(localStorage.getItem('profileUser')).lastName} onChange={this.onTextChange} required/>
+                <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='email' value={JSON.parse(localStorage.getItem('profileUser')).email} onChange={this.onTextChange} required/>
+                <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' value={JSON.parse(localStorage.getItem('profileUser')).phone} onChange={this.onTextChange} required/>
               </Form>
             </Grid.Column>
             <Grid.Column width={2}>

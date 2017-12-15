@@ -46,7 +46,7 @@ export default class PostRight extends Component {
 
           <Accordion.Title active={activeIndex === 2} index={2} onClick={this.handleClick}>
             <Icon name='dropdown' />
-            How do you acquire a dog?
+            What's new ?
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 2}>
             <p>

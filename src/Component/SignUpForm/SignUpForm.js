@@ -48,36 +48,40 @@ class SignUpForm extends Component {
 
         return (
 
-            <div className="S">
 
 
-                <Grid>
-                    <Grid.Column width={2}>
 
-                    </Grid.Column>
-                    <Grid.Column width={12}>
-                        <Form>
-                            <Header as='h2' attached='top'>
-                                SIGN UP WITH YOUR E-MAIL  <Icon name='add user' />
-                            </Header>
-                            <Segment attached>
+            <Grid>
+                <Grid.Column width={2}>
 
-                                <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' onChange={this.onTextChange} required />
-                                <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' onChange={this.onTextChange} required />
-                                <Form.Input name="username" label='Username' placeholder='Username' type='text' onChange={this.onTextChange} required />
-                                <Form.Input name="password" label='Password' placeholder='Password' type='password' onChange={this.onTextChange} required />
-                                <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='email' onChange={this.onTextChange} required />
-                                <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' onChange={this.onTextChange} required />
+                </Grid.Column>
+                <Grid.Column width={12}>
+                    <Form>
+                        <Header as='h2' attached='top'>
+                            SIGN UP WITH YOUR E-MAIL  <Icon name='add user' />
+                        </Header>
+                        <Segment attached>
 
-                                <a href="/"><Button color='red' type='sumbit' onClick={this.onSubmit}>Submit</Button></a>   </Segment>
-                        </Form >
-                    </Grid.Column>
-                    <Grid.Column width={2}>
 
-                    </Grid.Column>
-                </Grid>
 
-            </div>
+
+                            <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' onChange={this.onTextChange} required />
+                            <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' onChange={this.onTextChange} required />
+                            <Form.Input name="username" label='Username' placeholder='Username' type='text' onChange={this.onTextChange} required />
+                            <Form.Input name="password" label='Password' placeholder='Password' type='password' onChange={this.onTextChange} required />
+                            <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='email' onChange={this.onTextChange} required />
+                            <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' onChange={this.onTextChange} required />
+
+                            <a href="/"><Button color='red' type='sumbit' onClick={this.onSubmit}>Submit</Button></a>
+                        </Segment>
+                    </Form >
+                </Grid.Column>
+                <Grid.Column width={2}>
+
+                </Grid.Column>
+            </Grid>
+
+
         );
     }
 }
