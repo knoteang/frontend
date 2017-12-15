@@ -19,6 +19,7 @@ class User extends Component {
   }
 
   getPosts = () => {
+    alert(localStorage.getItem('temUser'))
     getMyPost()
       .then(data => this.setState({ allPosts: data }))
       .catch(err => console.error('Something went wrong.'))
