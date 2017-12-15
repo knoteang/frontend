@@ -33,10 +33,8 @@ class SignUpForm extends Component {
             if (data.status === 200) {
                 window.location.assign('/')
             } else {
-
+                alert('username is already used or please input data')
                 window.location.reload()
-                alert('please input ')
-
             }
         })
     }

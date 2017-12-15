@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Icon, Button, Modal, Header, Form, Grid, Divider } from 'semantic-ui-react'
-import { postEdit } from '../../api'
+import { postEdit, getUserOne } from '../../api'
 
 
 
@@ -36,11 +36,18 @@ class ModalEdit extends Component {
   handleOpen = () => this.setState({ modalOpen: true })
   handleClose = () => this.setState({ modalOpen: false })
 
+  setUser = () => {
+    getUserOne(JSON.parse(localStorage.getItem('profileUser')).username).then(data => {
+      this.state.firstName = data.firstName
+      this.state.lastName = data.lastName
+      this.state.email = data.email
+      this.state.phone = data.phone
+    })
+  }
+
   componentWillMount() { // when render finish call is func
-    this.state.firstName = JSON.parse(localStorage.getItem('profileUser')).firstName
-    this.state.lastName = JSON.parse(localStorage.getItem('profileUser')).lastName
-    this.state.email = JSON.parse(localStorage.getItem('profileUser')).email
-    this.state.phone = JSON.parse(localStorage.getItem('profileUser')).phone
+    this.setUser()
+
   }
 
   render() {
@@ -53,7 +60,7 @@ class ModalEdit extends Component {
       >
 
         <Modal.Content>
-          <Header>Edit Profile</Header><Divider/>
+          <Header>Edit Profile</Header><Divider />
           <Grid>
             <Grid.Column width={2}>
 

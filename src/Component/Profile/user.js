@@ -32,18 +32,17 @@ class User extends Component {
         this.state.us = data.username
         this.state.mail = data.email
         this.state.ph = data.phone
-      })
+      }).then(this.getPosts())
   }
 
   getPosts = () => {
     getMyPost()
       .then(data => this.setState({ allPosts: data }))
       .catch(err => console.error('Something went wrong.'))
-      .then(this.getUser())
   }
 
   componentDidMount() { // when render finish call is func
-    this.getPosts()
+    this.getUser()
   }
 
   render() {
@@ -52,7 +51,7 @@ class User extends Component {
 
       <div className="Profile">
 
-       
+
         <div class="ui hidden divider"></div>
         <div class="ui container">
           <div class="ui stackable grid">
