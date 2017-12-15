@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Icon, Button, Modal, Header, Form, Grid } from 'semantic-ui-react'
+import { Icon, Button, Modal, Header, Form, Grid, Divider } from 'semantic-ui-react'
 import { postEdit } from '../../api'
 
 
@@ -45,7 +45,7 @@ class ModalEdit extends Component {
         open={this.state.modalOpen}
         onClose={this.handleClose}
       >
-        <Header icon='browser' content='Edit Your Profile' />
+
         <Modal.Content>
           <Grid>
             <Grid.Column width={2}>

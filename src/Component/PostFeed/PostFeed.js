@@ -83,8 +83,9 @@ class PostCom extends Component {
 
                 <Grid.Column width={8} >
                     <Menu.Item>
-                        <Input size="large" placeholder='Search...' name='sw' value={this.state.sw} onChange={this.onSearch} />
-                        <Button circular icon='search' onClick={this.search}></Button>
+
+                        <Input fluid size="large" placeholder='Search...' name='sw' value={this.state.sw} onChange={this.onSearch} />
+                        <Button fluid  onClick={this.search}><Icon name='search' />Search User</Button>
                     </Menu.Item>
                     <Segment raised>
                         <div class="ui form" >

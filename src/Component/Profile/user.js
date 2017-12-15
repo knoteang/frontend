@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Grid, Button, Divider, Container, Segment, Popup, Modal, Header, List } from 'semantic-ui-react'
+import { Icon, Grid,Rating, Button, Divider, Container, Segment, Popup, Modal, Header, List } from 'semantic-ui-react'
 import { getMyPost } from '../../api'
 
 import pic from './daniel.jpg'
@@ -35,11 +35,11 @@ class User extends Component {
 
       <div className="Profile">
 
-        <div class="ui grid massive message">
+        <div class="ui grid massive warning message">
           <div class="ui container">
             <div class="row">
               <div class="h1 ui huge header">
-                Hello, world!
+              PS POST
           </div>
 
 
@@ -64,7 +64,7 @@ class User extends Component {
                     size='large'
                   />
                   <div class="content">
-                    <a class="header" href="/Profile">{JSON.parse(localStorage.getItem('profileUser')).username}</a>
+                    <a class="header" href="/Profile">{localStorage.getItem('temUser')}</a>
 
                   </div>
                   <div class="content">
@@ -114,7 +114,8 @@ class User extends Component {
                                   <div class="text">
                                     {post.content}
                                   </div>
-                                  <Button circular icon='eye' size="mini" name={post._id} onClick={(e) => this.setID(post._id)} />
+                                  <Rating icon='heart' defaultRating={1} maxRating={3} />
+                                   <Button circular icon='eye' size="mini" name={post._id} onClick={(e) => this.setID(post._id)} />
 
                                   <Divider /></div>
                               </div>

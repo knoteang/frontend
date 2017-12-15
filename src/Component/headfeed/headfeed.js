@@ -25,7 +25,7 @@ class HeadFeed extends Component {
               <a class="header item" href="/Profile" onClick={this.setTemUser}>{JSON.parse(localStorage.getItem('profileUser')).username}</a>
               <Dropdown text="Setting" pointing className='link item'>
                 <Dropdown.Menu>
-
+                <Dropdown.Item>Admin</Dropdown.Item>
                   <Dropdown.Item><ModalEdit /></Dropdown.Item>
 
                 </Dropdown.Menu>
