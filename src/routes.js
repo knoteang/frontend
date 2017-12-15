@@ -8,7 +8,7 @@ import Feed from './Pages/feed'
 import Profile from './Pages/profile'
 import Admin from './Pages/admin'
 import PostFeed from './Pages/postfeed'
-import Facebook from './Pages/Oauth/Facebook'
+import Facebook from './Component/choose/Facebook'
 
 const Routes = () => {
   return (

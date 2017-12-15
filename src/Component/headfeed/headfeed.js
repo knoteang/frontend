@@ -7,6 +7,7 @@ import ModalEdit from '../edit/edit'
 class HeadFeed extends Component {
 
   signOut = event => {
+    //response.clear()
     localStorage.clear()
     window.location.assign('/')
   }
