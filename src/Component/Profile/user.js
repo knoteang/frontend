@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Grid, Button, Divider, Container,Segment,Popup ,Modal,Header} from 'semantic-ui-react'
 
-import ModalEdit from '../edit/edit'
+
 import pic from './steve.jpg'
 import './user.css'
 class User extends Component {
@@ -51,7 +51,7 @@ class User extends Component {
   <div class="content">
 
       
-        <ModalEdit/>
+       
       
 
 
