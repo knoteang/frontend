@@ -82,6 +82,12 @@ export const getTopic = () => {
     .catch(error => error.response)
 }
 
+export const getMyPost = () => {
+  return axiosInstance.get('api/post/mypost/' + JSON.parse(localStorage.getItem('profileUser')).username)
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
 export const postEdit = (firstName, lastName, email, phone) => {
   const data = {
     username: JSON.parse(localStorage.getItem('profileUser')).username,

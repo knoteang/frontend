@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Comment } from 'semantic-ui-react'
+import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Input, Menu } from 'semantic-ui-react'
 import { publishPost, getAllPosts } from '../../api'
 
 import pic from '../Profile/steve.jpg'
@@ -15,12 +15,12 @@ class PostCom extends Component {
         }
         this.onTextChange = this.onTextChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+        this.onSearch = this.onSearch.bind(this)
         this.setID = this.setID.bind(this)
     }
     onTextChange(e) {
         const name = e.target.name
         const value = e.target.value
-
         this.setState({ [name]: value })
     }
 
@@ -29,6 +29,10 @@ class PostCom extends Component {
         //this.props.history.replace('/Comment')
         console.log(localStorage.getItem("post_id"))
         window.location.assign("/Comment")
+    }
+
+    onSearch(e) {
+
     }
 
     onSubmit(e) {
@@ -58,25 +62,29 @@ class PostCom extends Component {
                 </Grid.Column>
 
 
-                <Grid.Column width={8} ><Segment raised>
-                    <div class="ui form" >
-                        <div class="field">
-                            <label>What's new?</label>
-                            <textarea autoHeight name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
+                <Grid.Column width={8} >
+                    <Menu.Item>
+                        <Input icon='search' placeholder='Search...' />
+                    </Menu.Item>
+                    <Segment raised>
+                        <div class="ui form" >
+                            <div class="field">
+                                <label>What's new?</label>
+                                <textarea autoHeight name='content' value={this.state.content} onChange={this.onTextChange}></textarea>
+                            </div>
+
+                            <br />
+
+                            <Container textAlign='right' >
+                                <Button animated textAlign='right' onClick={this.onSubmit}>
+                                    <Button.Content visible >POST</Button.Content>
+                                    <Button.Content hidden>
+                                        <Icon name='comment' />
+                                    </Button.Content>
+                                </Button>
+                            </Container>
                         </div>
-
-                        <br />
-
-                        <Container textAlign='right' >
-                            <Button animated textAlign='right' onClick={this.onSubmit}>
-                                <Button.Content visible >POST</Button.Content>
-                                <Button.Content hidden>
-                                    <Icon name='comment' />
-                                </Button.Content>
-                            </Button>
-                        </Container>
-                    </div>
-                </Segment>
+                    </Segment>
 
                     {posts.length >= 0 ? //in { } is logic
                         posts.map(post =>
