@@ -31,6 +31,7 @@ class ModalEdit extends Component {
     e.preventDefault()
     console.log(this.state)
     postEdit(this.state.firstName, this.state.lastName, this.state.email, this.state.phone)
+      .then(window.location.assign('/Profile'))
   }
 
   handleOpen = () => this.setState({ modalOpen: true })
