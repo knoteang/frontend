@@ -3,9 +3,30 @@ import './choose.css'
 import { Icon, Button } from 'semantic-ui-react'
 import { loginOauth } from '../../api'
 import { log } from 'util';
+import FacebookLogin from 'react-facebook-login';
+import { saveuser } from '../../api'
 
 
 class Choose extends Component {
+    componentClicked = event => {
+        console.log('component click', event.target.value)
+      }
+
+    responseFacebook(response) {
+        const data = response
+        console.log(data);
+        console.log(data.name);
+        console.log(data.email+"sssss");
+        saveuser(this.data.name,this.data.email).then(data1 => {
+            console.log(data1);
+            if (data.status === 200) {
+                window.location.assign('/')
+            } else {
+                window.location.reload()
+            }
+        })
+
+    }
 
     state = { // set state can use in class component only
         pt: ''
@@ -38,8 +59,13 @@ class Choose extends Component {
                         <a href="/SignUp"> <div class="ui inverted blue button" >
                             Sign up with e-mail
                 </div></a><div class="ui divider horizontal">Or</div>
-                        <Button circular color='facebook' icon='facebook' name='facebook'
-                            onClick={this.logO} />
+                        <FacebookLogin circular color='facebook' icon='facebook' name='facebook'
+                            appId="392267944559378"
+                            autoLoad={true}
+                            fields="name,email,picture"
+                            scope="public_profile,user_friends,user_actions.books"
+                            onClick={this.componentClicked}
+                            callback={this.responseFacebook} />
                         <Button circular color='twitter' icon='twitter' name='twitter'
                             onClick={this.logO} />
                         <Button circular color='instagram' icon='instagram' name='instagram'
