@@ -33,7 +33,10 @@ class SignUpForm extends Component {
             if (data.status === 200) {
                 window.location.assign('/')
             } else {
+
                 window.location.reload()
+                alert('please input ')
+
             }
         })
     }
