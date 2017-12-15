@@ -19,7 +19,6 @@ class User extends Component {
   }
 
   getPosts = () => {
-    alert(localStorage.getItem('temUser'))
     getMyPost()
       .then(data => this.setState({ allPosts: data }))
       .catch(err => console.error('Something went wrong.'))
@@ -89,7 +88,7 @@ class User extends Component {
 
 
                         <div class="ui comments">
-                          <h1>All Your Post</h1>  <Divider />
+                          <h1>All {localStorage.getItem('temUser')} Post</h1>  <Divider />
                           {posts.length >= 0 ? //in { } is logic
                             posts.map(post =>
                               <div class="comment">

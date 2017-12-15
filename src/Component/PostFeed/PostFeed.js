@@ -29,7 +29,6 @@ class PostCom extends Component {
     setID(id) {
         localStorage.setItem('post_id', id)
         //this.props.history.replace('/Comment')
-        console.log(localStorage.getItem("post_id"))
         window.location.assign("/Comment")
     }
 
