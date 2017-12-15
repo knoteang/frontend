@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Input, Menu,Rating } from 'semantic-ui-react'
-import { publishPost, getAllPosts, search } from '../../api'
+import { Icon, Grid, Button, Divider, Container, Segment, Form, Message, Input, Menu, Rating } from 'semantic-ui-react'
+import { publishPost, getAllPosts, search, deletePost } from '../../api'
 
 import pic from '../Profile/daniel.jpg'
 import PostLeft from '../Post/PostLeft'
@@ -30,6 +30,11 @@ class PostCom extends Component {
         localStorage.setItem('post_id', id)
         //this.props.history.replace('/Comment')
         window.location.assign("/Comment")
+    }
+
+    deletePost(id) {
+        deletePost(id)
+            .then(this.getPosts())
     }
 
     onSearch(e) {
@@ -118,12 +123,14 @@ class PostCom extends Component {
                                                         <div class="text">
                                                             {post.content}
 
-                                                            <Divider/>
+                                                            <Divider />
                                                             <Button.Group basic size='mini' floated="right">
-                                      <Button icon='delete' />
-                                       <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
-                                       </Button.Group> 
-                                       <Rating icon='heart' defaultRating={1} maxRating={3} />
+                                                                {JSON.parse(localStorage.getItem('profileUser')).status == "admin" ? (
+                                                                    <Button icon='delete' name={post._id} onClick={(e) => this.deletePost(post._id)} />
+                                                                ) : null}
+                                                                <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
+                                                            </Button.Group>
+                                                            <Rating icon='heart' defaultRating={1} maxRating={3} />
 
                                                         </div>
                                                     </div>
@@ -133,7 +140,7 @@ class PostCom extends Component {
                                         </div>
                                     </div>
                                 </div>
-                               
+
 
                             </Segment>
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Table, Grid, Button, Modal, Header, Icon } from 'semantic-ui-react'
+import { getAllUsers, deleteUser } from '../../api'
 
 class TableUser extends Component {
 
@@ -7,29 +8,35 @@ class TableUser extends Component {
         super();
         this.state = {
             modalOpen: false,
+            allUsers: []
         }
-        //this.onSubmit = this.onSubmit.bind(this)
-        // this.onTextChange = this.onTextChange.bind(this)
+        this.getUsers = this.getUsers.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
+
+    onSubmit(e) {
+        deleteUser(e.target.name)
+            .then(this.getUsers())
+    }
+
+    getUsers = () => {
+        getAllUsers()
+            .then(data => this.setState({ allUsers: data }))
+            .catch(err => console.error('Something went wrong.'))
+    }
+
+    componentDidMount() { // when render finish call is func
+        this.getUsers()
+    }
+
     show = dimmer => () => this.setState({ dimmer, open: true })
     close = () => this.setState({ open: false })
-
-
-    // onSubmit(e) {
-    //     e.preventDefault()
-    //     console.log(this.state)
-    //     postEdit(this.state.firstName, this.state.lastName, this.state.email, this.state.phone)
-    //       .then(this.handleClose)
-    //   }
-
-
-
     handleOpen = () => this.setState({ modalOpen: true })
     handleClose = () => this.setState({ modalOpen: false })
 
     render() {
         const { open, dimmer } = this.state
-
+        const users = this.state.allUsers
         return (
             <Grid>
                 <Grid.Column width={4}>
@@ -41,42 +48,31 @@ class TableUser extends Component {
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell>User</Table.HeaderCell>
-                                <Table.HeaderCell textAlign='right'>Status</Table.HeaderCell>
+                                <Table.HeaderCell>Firstname</Table.HeaderCell>
+                                <Table.HeaderCell>Lastname</Table.HeaderCell>
+                                <Table.HeaderCell>id</Table.HeaderCell>
+                                <Table.HeaderCell textAlign='center'>Status</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
                         <Table.Body >
-                            <Table.Row>
-                                <Table.Cell>John</Table.Cell>
-                                <Table.Cell textAlign='right'>
+                            {users.length >= 0 ? //in { } is logic
+                                users.map(user =>
+                                    <Table.Row>
+                                        <Table.Cell>{user.username}</Table.Cell>
+                                        <Table.Cell>{user.firstName}</Table.Cell>
+                                        <Table.Cell>{user.lastName}</Table.Cell>
+                                        <Table.Cell>{user._id}</Table.Cell>
+                                        <Table.Cell textAlign='center'>
+                                            <Button name={user._id} color='red' onClick={this.onSubmit} inverted>
+                                                <Icon name='cancel' /> Delete
+                                        </Button>
 
-
-
-                                    <Modal
-                                        trigger={<Button color="red" onClick={this.handleOpen}>Delete</Button>}
-                                        open={this.state.modalOpen}
-                                        onClose={this.handleClose}
-
-                                    >
-                                        <Modal.Header>
-                                            Delete This Account
-                                            </Modal.Header>
-                                        <Modal.Content>
-                                            <p>Are you sure you want to delete this account</p>
-                                        </Modal.Content>
-                                        <Modal.Actions>
-                                            <Button color='green' onClick={this.onSubmit} inverted>
-                                                <Icon name='checkmark' /> Confirm
-                                                </Button>
-                                            <Button color='red' onClick={this.handleClose} inverted>
-                                                <Icon name='checkmark' /> Cancel
-                                            </Button>
-                                        </Modal.Actions>
-                                    </Modal>
-
-                                </Table.Cell>
-                            </Table.Row>
-
+                                        </Table.Cell>
+                                    </Table.Row>
+                                )
+                                : null
+                            }
                         </Table.Body>
 
                     </Table>

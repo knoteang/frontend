@@ -94,6 +94,24 @@ export const getMyPost = () => {
     .catch(error => error.response)
 }
 
+export const getAllUsers = () => {
+  return axiosInstance.get('api/user/getuser/')
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
+export const deleteUser = (pt) => {
+  return axiosInstance.get('api/user/delete/' + pt)
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
+export const deletePost = (pt) => {
+  return axiosInstance.get('api/post/delete/' + pt)
+    .then(response => response.data)
+    .catch(error => error.response)
+}
+
 export const postEdit = (firstName, lastName, email, phone) => {
   const data = {
     username: JSON.parse(localStorage.getItem('profileUser')).username,
