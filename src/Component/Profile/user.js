@@ -42,7 +42,7 @@ class User extends Component {
       .then(this.getUser())
   }
 
-  componentWillMount() { // when render finish call is func
+  componentDidMount() { // when render finish call is func
     this.getPosts()
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import { loginLocal, getUserOne } from '../../api'
-
+import ModalHead from './modalhead'
 class App extends Component {
 
   state = { // set state can use in class component only
@@ -27,6 +27,8 @@ class App extends Component {
           //this.props.history.replace('/') // can use when import to file routes // redirect
           //console.log(localStorage.getItem('usernamePS') + "1234567")
           //window.location.assign('/Feed')
+        }else{
+          alert("Username or Password is invalid"); 
         }
       })
   }
@@ -62,6 +64,8 @@ class App extends Component {
                       <button type='submit' class="ui green button">
                         Log in
                       </button>
+
+                      <ModalHead/>
                     </div>
                   </div>
                 </div>

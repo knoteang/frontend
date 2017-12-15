@@ -20,7 +20,6 @@ class ModalEdit extends Component {
     this.onTextChange = this.onTextChange.bind(this)
   }
 
-
   onTextChange(e) {
     const name = e.target.name
     const value = e.target.value
@@ -36,6 +35,13 @@ class ModalEdit extends Component {
 
   handleOpen = () => this.setState({ modalOpen: true })
   handleClose = () => this.setState({ modalOpen: false })
+
+  componentWillMount() { // when render finish call is func
+    this.state.firstName = JSON.parse(localStorage.getItem('profileUser')).firstName
+    this.state.lastName = JSON.parse(localStorage.getItem('profileUser')).lastName
+    this.state.email = JSON.parse(localStorage.getItem('profileUser')).email
+    this.state.phone = JSON.parse(localStorage.getItem('profileUser')).phone
+  }
 
   render() {
     return (
@@ -54,10 +60,10 @@ class ModalEdit extends Component {
             </Grid.Column>
             <Grid.Column width={12}>
               <Form>
-                <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' value={JSON.parse(localStorage.getItem('profileUser')).firstName} onChange={this.onTextChange} required />
-                <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' value={JSON.parse(localStorage.getItem('profileUser')).lastName} onChange={this.onTextChange} required/>
-                <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='email' value={JSON.parse(localStorage.getItem('profileUser')).email} onChange={this.onTextChange} required/>
-                <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' value={JSON.parse(localStorage.getItem('profileUser')).phone} onChange={this.onTextChange} required/>
+                <Form.Input name="firstName" label='First Name' placeholder='First Name' type='text' value={this.state.firstName} onChange={this.onTextChange} />
+                <Form.Input name="lastName" label='Last Name' placeholder='Last Name' type='text' value={this.state.lastName} onChange={this.onTextChange} />
+                <Form.Input name="email" label='email' placeholder='xxxxx@.mail.com' type='text' value={this.state.email} onChange={this.onTextChange} />
+                <Form.Input name="phone" label='phone' placeholder='0XXXXXXXXX' type='text' value={this.state.phone} onChange={this.onTextChange} />
               </Form>
             </Grid.Column>
             <Grid.Column width={2}>
