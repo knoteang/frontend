@@ -28,6 +28,7 @@ const Routes = () => {
             ) : (
                 <Route exact path="/Admin" component={Admin} />
               )}
+               <Route exact path="*" component={PostFeed} />
           </Switch>
         )}
     </Switch>
