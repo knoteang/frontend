@@ -121,8 +121,8 @@ class User extends Component {
                                   <div class="text">
                                     {post.content}
                                   </div>
-                                  <Rating icon='heart' defaultRating={1} maxRating={3} />
-                                  <Button circular icon='eye' size="mini" name={post._id} onClick={(e) => this.setID(post._id)} />
+                                  <Rating icon='heart' defaultRating={1} maxRating={5} />
+                                  <Button circular icon='eye' floated="right" size="tiny" name={post._id} onClick={(e) => this.setID(post._id)} />
 
                                   <Divider /></div>
                               </div>

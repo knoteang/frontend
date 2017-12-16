@@ -131,7 +131,7 @@ class PostCom extends Component {
                                                                 ) : null}
                                                                 <Button icon='eye' name={post._id} onClick={(e) => this.setID(post._id)} />
                                                             </Button.Group>
-                                                            <Rating icon='heart' defaultRating={1} maxRating={3} />
+                                                            <Rating icon='heart' defaultRating={1} maxRating={5} />
 
                                                         </div>
                                                     </div>
